@@ -1,0 +1,4 @@
+1. figure out why one category is coming as undefined
+2. remove old stories
+3. set up cue for klout ** have blocked out everywhere I need to send it over
+4. Should I just pass the object around and use id as a field? that might make things less confusing
