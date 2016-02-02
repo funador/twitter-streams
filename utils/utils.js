@@ -4,7 +4,6 @@ var shorten     = require('expand-url')
 var pagerank    = require('pagerank')
 var size        = require('request-image-size')
 var moment      = require('moment')
-var topics      = require('../utils/constants').topics
 
 module.exports = {
 
@@ -12,13 +11,13 @@ module.exports = {
   shorten: (url, cb) => {
     shorten.expand(url, (err, expanded) => {
       if(!err){
-        var display_url= expanded.split('/')[2].replace(/www./i, '')
+        var display_url = expanded.split('/')[2].replace(/www./i, '')
         cb(null, {display_url: display_url})
       }
     })
   },
 
-  // determines google packrank of a root page
+  // determines google packrank of root page
   pageRank: (url, cb) => {
     shorten.expand(url, (err, expanded) => {
       if(expanded) {
@@ -67,6 +66,8 @@ module.exports = {
     return false
   },
 
+  // filter the tweet for tracked topic
+  // this should be a proper filter
   topic: (text, topics) => {
     var tweet = text.toLowerCase()
     var filtered = ''
@@ -78,4 +79,5 @@ module.exports = {
     }
     return filtered
   }
+
 }

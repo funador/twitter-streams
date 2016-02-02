@@ -12,6 +12,7 @@ module.exports = {
       var tweet = snap.val()
       var id    = snap.key()
 
+      // should I have an else on this?
       if(!tweet.deleteRef) {
         async.parallel([
           (cb) => {
@@ -34,12 +35,14 @@ module.exports = {
             // todo: make klout cue
             (cb) => {
               if(!tweet.checked) {
-                // klout.cue(tweet.retweeters[0].screen_name, cb)
+                // klout.cue(ref, id, tweet.retweeters[0].screen_name)
+                // no need to check anymore, will store Klout scores
                 klout.score(tweet.retweeters[0].screen_name, cb)
               }
             },
             (cb) => {
               if(!tweet.checked) {
+                // klout.cue(ref, id, tweet.retweeters[0].screen_name)
                 klout.score(tweet.screen_name, cb)
               }
             }
@@ -51,12 +54,12 @@ module.exports = {
             tweet.title           = unfluffed[0].title
             tweet.image           = unfluffed[0].image
             tweet.description     = unfluffed[0].description
-            tweet.read_time       = unfluffed[0].read_time
+            tweet.read_mins       = unfluffed[0].read_mins
             tweet.page_rank       = unfluffed[1].page_rank
             tweet.display_url     = unfluffed[2].display_url
             tweet.checked         = true
 
-            ref.child(`${tweet.topic}/${tweet.image_size}/${id}`).update(tweet)
+            ref.child(`${tweet.topic}/${tweet.image_size}/${id}`).set(tweet)
 
             ref.child(`all/${id}`).set({
               deleteRef: `${tweet.topic}/${tweet.image_size}/${id}`,

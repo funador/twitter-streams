@@ -1,7 +1,6 @@
 'use strict'
 
-var c         = require('../utils/constants')
-var key       = c.key
+var key       = require('../utils/constants').key
 var request   = require('request')
 var baseUrl   = 'http://api.klout.com/v2/'
 var idUrl     = `${baseUrl}identity.json/twitter?screenName=`
@@ -20,15 +19,18 @@ module.exports = {
             if(err) console.error(err)
             if(body) {
               var score = JSON.parse(body)
+              // send the score to the apt article
               // you can remove the callback now
               cb(null, Math.floor(score.score))
             }
         })
       }
     })
-  }
+  },
 
   cue: (ref, screen_name) => {
-    // send to firebase ref
+    // data structure => id: {score: 42}
+    // if no snap, call klout
+    // if snap, add to tweetObj
   }
 }

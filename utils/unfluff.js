@@ -21,7 +21,7 @@ module.exports = {
           var title              = utils.cleanText(data.title)
 
           var title_length       = data.title.split(' ').length
-          var read_time          = Math.ceil(data.text.split(' ').length / 200)
+          var read_mins          = Math.ceil(data.text.split(' ').length / 200)
 
           if(data.image.indexOf("http://") > -1) {
             var image = data.image
@@ -30,15 +30,16 @@ module.exports = {
           var obj = {
             description: data.description,
             image: image || false,
-            read_time: read_time,
+            read_mins: read_mins,
             article: data.text,
             title: data.title
           }
 
-          if(image && description_length < 50 && title_length < 13 && read_time) {
+          if(image && description_length < 100 && title_length < 13 && read_mins) {
             // send to classifier
             cb(null, obj)
           }
+          // else still need to send something back
         }
       }
     })

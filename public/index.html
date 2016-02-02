@@ -11,52 +11,26 @@
 </head>
 
 <body>
-
   <div ng-controller="storyCtrl" class="stories">
 
-    <div ng-repeat="tweet in nflstories.slice().reverse()" class="col s12 m7">
-        <div class="card">
-          <div class="card-image story">
-            <img class="fade" ng-src="{{tweet.image}}">
-            <span class="card-title">{{tweet.title}}</span>
-          </div>
-          <div class="card-content">
-            <p>{{tweet.description}}</p>
-          </div>
-          <div class="card-action">
-            <a ng-href="{{tweet.url}}">{{tweet.display_url}}</a>
-          </div>
+    <div ng-repeat="tweet in nflstories.slice().reverse()" class="col s8 m8">
+      <div class="card">
+        <div class="card-image story">
+          <img class="fade" ng-src="{{tweet.image}}">
+          <span class="card-title">{{tweet.title}}</span>
         </div>
-      </div>
-
-
-    <ul class="collection">
-      <li ng-repeat="tweet in nfltweets.slice().reverse()" class="collection-item avatar">
-        <img ng-src="{{tweet.profile_image_url}}" alt="" class="circle">
-        <span class="title"><a ng-href="{{tweet.url}}">{{tweet.title}}</a></span>
-        <p>{{tweet.description}}</p>
-        <p>{{tweet.score}} score</p>
-        <a ng-href="{{tweet.url}}" class="secondary-content"><i class="material-icons">{{tweet.display_url}}</i></a>
-      </li>
-    </ul>
-
-    <div ng-repeat="tweet in nflheros.slice().reverse()" class="card">
-      <div class="card-image story">
-        <img class="fade" ng-src="{{tweet.image}}">
-        <span class="card-title">{{tweet.title}}</span>
-      </div>
-      <div class="card-content">
-        <p>{{tweet.description}}</p>
-        <p>{{tweet.read_time}} min read</p>
-        <p>{{tweet.score}} <img ng-src="{{tweet.profile_image_url}}"></p>
-      </div>
-      <div class="card-action">
-        <a ng-href="{{tweet.url}}">{{tweet.display_url}}</a>
+        <div class="card-content">
+          <p>{{tweet.description}}</p>
+        </div>
+        <div class="card-action">
+          <a ng-href="{{tweet.url}}">{{tweet.display_url}}</a>
+        </div>
       </div>
     </div>
 
-    <ul class="collection">
-      <li ng-repeat="tweet in nflundefined.slice().reverse()" class="collection-item avatar">
+
+    <ul class="collection" class="col s12 m4">
+      <li ng-repeat="tweet in nfltweets.slice().reverse()" class="collection-item avatar">
         <img ng-src="{{tweet.profile_image_url}}" alt="" class="circle">
         <span class="title"><a ng-href="{{tweet.url}}">{{tweet.title}}</a></span>
         <p>{{tweet.description}}</p>

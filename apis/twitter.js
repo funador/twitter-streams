@@ -15,12 +15,10 @@ module.exports = {
         var age = utils.accountAge(tweet.user.created_at)
         var topic = utils.topic(tweet.text, topicsArr)
 
-        if (tweet.retweeted_status && tweet.entities.urls[0] && age) {
-          var url
-          var id = tweet.retweeted_status.id_str
-          if(tweet.entities.urls[0].expanded_url) {
-            url = tweet.entities.urls[0].expanded_url
-          }
+        if (tweet.retweeted_status && tweet.entities.urls[0].expanded_url
+                                   && tweet.entities.urls[0] && age) {
+
+          var url = tweet.entities.urls[0].expanded_url
 
           var tweetObj = {
             profile_image_url: tweet.retweeted_status.user.profile_image_url,
@@ -38,10 +36,7 @@ module.exports = {
             url: url
           }
 
-          if(topic){
-            firebase.push_fb(ref, tweetObj, id)
-          }
-
+          firebase.push_fb(ref, tweetObj, id)
         }
       })
       stream.on('error', (err) => {

@@ -2,6 +2,7 @@
   -webkit-filter: grayscale(0.7) !important;
   transition: all 3s ease;
 }
+
 .story:hover img.fade, .hero:hover img.fade {
   -webkit-filter: grayscale(0.4) !important;
   transition: all 450ms ease;
@@ -11,4 +12,8 @@
   background:rgba(0, 0, 0, 0.7);
   padding: 5px 10px !important;
   font-size: 1.3em;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+  color: #039be5
 }
