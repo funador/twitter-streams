@@ -26,11 +26,5 @@ module.exports = {
         })
       }
     })
-  },
-
-  cue: (ref, screen_name) => {
-    // data structure => id: {score: 42}
-    // if no snap, call klout
-    // if snap, add to tweetObj
   }
 }

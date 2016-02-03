@@ -2,7 +2,7 @@
 
 var utils       = require('../utils/utils')
 var c           = require('../utils/constants')
-var firebase    = require('./firebase.push_fb')
+var firebase    = require('./firebase.push')
 var topicsArr   = ['nfl', 'nba', 'nhl', 'mlb']
 var topics      = topicsArr.join(', ')
 
@@ -15,6 +15,8 @@ module.exports = {
         var age = utils.accountAge(tweet.user.created_at)
         var topic = utils.topic(tweet.text, topicsArr)
 
+        // could have a utils.prep_tweet or similar, maybe put the twitter stuff
+        // on routes to get it from the back to the front
         if (tweet.retweeted_status && tweet.entities.urls[0].expanded_url
                                    && tweet.entities.urls[0] && age) {
 
@@ -36,7 +38,7 @@ module.exports = {
             url: url
           }
 
-          firebase.push_fb(ref, tweetObj, id)
+          firebase.push(ref, tweetObj, id)
         }
       })
       stream.on('error', (err) => {

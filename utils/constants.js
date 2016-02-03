@@ -10,6 +10,11 @@ module.exports = {
     access_token_key: process.env.TOKEN_KEY,
     access_token_secret: process.env.TOKEN_SECRET
   }),
-  
-  klout: process.env.KLOUT
+
+  klout: process.env.KLOUT,
+
+  refs: {
+    // put refs here
+    // dfs, sports, personal
+  }
 }

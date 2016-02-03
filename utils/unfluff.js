@@ -39,7 +39,10 @@ module.exports = {
             // send to classifier
             cb(null, obj)
           }
-          // else still need to send something back
+          else {
+            // 
+            cb(null, null)
+          }
         }
       }
     })

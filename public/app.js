@@ -2,7 +2,7 @@
 
 var app = angular.module("app", ["firebase"])
 
-app.controller("storyCtrl", function($scope, $firebaseArray, $timeout) {
+app.controller("storyCtrl", function($scope, $firebaseArray, $timeout, $parse) {
 
   let ref = new Firebase("https://twitter-streams.firebaseio.com")
 

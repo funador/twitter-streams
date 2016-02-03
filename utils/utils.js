@@ -45,9 +45,9 @@ module.exports = {
         else {
           cb(null, {image_size: 'tweet'})
         }
-      }
+      } 
       else {
-        cb(null, {image_size: 'tweet'})
+        cb(null, {image_size: 'none'})
       }
     })
   },
