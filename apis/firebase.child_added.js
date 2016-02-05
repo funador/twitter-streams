@@ -1,7 +1,7 @@
 'use strict'
 
 var async       = require('async')
-var klout       = require('../apis/klout')
+var klout       = require('../apis/klout.cue')
 var utils       = require('../utils/utils')
 var unfluff     = require('../utils/unfluff')
 var classifier  = require('../utils/classifier')
@@ -13,7 +13,7 @@ module.exports = {
       var id    = snap.key()
 
       // should I have an else on this?
-      if(!tweet.deleteRef) {
+      if(!tweet.checked) {
         async.parallel([
           (cb) => {
             unfluff.unfluff(tweet.url, cb)
@@ -30,27 +30,11 @@ module.exports = {
           async.parallel([
             (cb) => {
               utils.imageSize(unfluffed[0].image, cb)
-            },
-            // todo: add influencees to score
-            // todo: make klout cue
-            (cb) => {
-              if(!tweet.checked) {
-                // klout.cue(ref, id, tweet.retweeters[0].screen_name)
-                // no need to check anymore, will store Klout scores
-                klout.score(tweet.retweeters[0].screen_name, cb)
-              }
-            },
-            (cb) => {
-              if(!tweet.checked) {
-                // klout.cue(ref, id, tweet.retweeters[0].screen_name)
-                klout.score(tweet.screen_name, cb)
-              }
             }
           ],
-          // klouted = cb of previous functions
-          function(err, klouted) {
-            tweet.image_size      = klouted[0].image_size
-            tweet.score           = klouted[2] + klouted[3]
+          // sized = cb of previous function
+          function(err, sized) {
+            tweet.image_size      = sized[0].image_size
             tweet.title           = unfluffed[0].title
             tweet.image           = unfluffed[0].image
             tweet.description     = unfluffed[0].description
@@ -59,11 +43,17 @@ module.exports = {
             tweet.display_url     = unfluffed[2].display_url
             tweet.checked         = true
 
-            ref.child(`${tweet.topic}/${tweet.image_size}/${id}`).set(tweet)
+            // send both retweeter and tweeter to klout cue for scoring
+            klout.cue(ref, `${tweet.topic}/${tweet.image_size}/${id}`, tweet.retweeters[0].screen_name)
+            klout.cue(ref, `${tweet.topic}/${tweet.image_size}/${id}`, tweet.screen_name)
 
-            ref.child(`all/${id}`).set({
-              deleteRef: `${tweet.topic}/${tweet.image_size}/${id}`,
-              timestamp: Date.now()
+            // send to classifier
+            classifier.category(id, tweet.topic, unfluffed[0].article)
+
+            // set the new ref
+            ref.child(`${tweet.topic}/${tweet.image_size}/${id}`).set(tweet)
+            ref.child(`all/${id}`).update({
+              image_size: sized[0].image_size
             })
           })
         })

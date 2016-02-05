@@ -36,12 +36,7 @@ module.exports = {
           }
 
           if(image && description_length < 100 && title_length < 13 && read_mins) {
-            // send to classifier
             cb(null, obj)
-          }
-          else {
-            // 
-            cb(null, null)
           }
         }
       }

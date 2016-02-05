@@ -1,6 +1,18 @@
-1. figure out why one category is coming as undefined
-2. remove old stories
-3. set up cue for klout ** have blocked out everywhere I need to send it over
-4. Should I just pass the object around and use id as a field? that might make things less confusing
-5. Look at all error warnings
-6. Remove moment error warnings
+Finish these three today
+
+1. remove old stories
+3. look into warning messages
+4. nytimes redirects / this is causing tons of breaks on the two util functions
+5. figure out the stopwords from unfluff
+6. Rip out Klout, it is probably just not worth it for what you are trying to do and doesn't scale
+
+///////////////////////////////////////////
+// possible solution to reconnects       //
+///////////////////////////////////////////
+
+https://github.com/request/request/issues/311
+request({uri: testUrl, jar: false}, function(error, response, body) {
+    if (!error && response.statusCode == 200) {
+        console.log(body);
+    }
+})

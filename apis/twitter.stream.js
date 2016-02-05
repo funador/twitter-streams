@@ -15,12 +15,14 @@ module.exports = {
         var age = utils.accountAge(tweet.user.created_at)
         var topic = utils.topic(tweet.text, topicsArr)
 
-        // could have a utils.prep_tweet or similar, maybe put the twitter stuff
-        // on routes to get it from the back to the front
-        if (tweet.retweeted_status && tweet.entities.urls[0].expanded_url
-                                   && tweet.entities.urls[0] && age) {
 
-          var url = tweet.entities.urls[0].expanded_url
+        if(tweet.retweeted_status && tweet.entities.urls[0] && age) {
+
+          if(tweet.entities.urls[0].expanded_url){
+            var url = tweet.entities.urls[0].expanded_url
+          }
+
+          var id  = tweet.retweeted_status.id
 
           var tweetObj = {
             profile_image_url: tweet.retweeted_status.user.profile_image_url,
@@ -31,18 +33,19 @@ module.exports = {
                 screen_name: tweet.user.screen_name
               },
             },
-            tweet_time: tweet.retweeted_status.created_at,
             timestamp: Date.now(),
+            checked: false,
             topic: topic,
             score: 0,
             url: url
           }
-
-          firebase.push(ref, tweetObj, id)
+          if(topic){
+            firebase.push(ref, id, tweetObj)
+          }
         }
       })
       stream.on('error', (err) => {
-        console.error(err)
+        console.error("ERRRRRR", err)
       })
     })
   }

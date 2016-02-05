@@ -5,11 +5,17 @@ var pagerank    = require('pagerank')
 var size        = require('request-image-size')
 var moment      = require('moment')
 
+// need something in there to block out certain domains
+// like ny-times... how else can you do this?
+
 module.exports = {
+
+  // have a problem here with redirects... maybe look at other packages?
 
   // Gets root domain for page display
   shorten: (url, cb) => {
     shorten.expand(url, (err, expanded) => {
+      if(err) cb(null, {display_url: null})
       if(!err){
         var display_url = expanded.split('/')[2].replace(/www./i, '')
         cb(null, {display_url: display_url})
@@ -20,10 +26,13 @@ module.exports = {
   // determines google packrank of root page
   pageRank: (url, cb) => {
     shorten.expand(url, (err, expanded) => {
+      if(err) if(err) cb(null, {page_rank: null})
       if(expanded) {
         var url = expanded.split("/").slice(0, 3).join("/")
         pagerank(url, function(err, rank) {
-          if(err) cb(null, { page_rank: null })
+          if(err) {
+            cb(null, { page_rank: null })
+          }
           else {
             cb(null, { page_rank: rank })
           }
@@ -45,9 +54,9 @@ module.exports = {
         else {
           cb(null, {image_size: 'tweet'})
         }
-      } 
+      }
       else {
-        cb(null, {image_size: 'none'})
+        cb(null, {image_size: 'tweet'})
       }
     })
   },
@@ -79,5 +88,4 @@ module.exports = {
     }
     return filtered
   }
-
 }
