@@ -12,12 +12,15 @@ module.exports = {
     c.client.stream('statuses/filter', {track: topics}, (stream) => {
 
       stream.on('data', (tweet) => {
-        var age = utils.accountAge(tweet.user.created_at)
-        var topic = utils.topic(tweet.text, topicsArr)
+        if(tweet.user){
+          var age = tweet.user.created_at.split(' ')[5]
+        }
 
+        if(tweet.text){
+          var topic = utils.topic(tweet.text, topicsArr)
+        }
 
-        if(tweet.retweeted_status && tweet.entities.urls[0] && age) {
-
+        if(tweet.retweeted_status && tweet.entities.urls[0] && age < 2015 && tweet.text) {
           if(tweet.entities.urls[0].expanded_url){
             var url = tweet.entities.urls[0].expanded_url
           }
@@ -36,7 +39,7 @@ module.exports = {
             timestamp: Date.now(),
             checked: false,
             topic: topic,
-            score: 0,
+            count: 1,
             url: url
           }
           if(topic){

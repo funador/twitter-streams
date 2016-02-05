@@ -1,7 +1,5 @@
 'use strict'
 
-var klout   = require('../apis/klout.cue')
-
 module.exports = {
   push: (ref, id, tweetObj) => {
     ref.child(`all/${id}`).transaction((snap) => {
@@ -9,6 +7,7 @@ module.exports = {
       // triggers firebase.child_added
       if(!snap) return tweetObj
 
+      // can I do the logic in here?  Try another transaction?  Or try 3 transactions based on image size?
       if(snap.image_size) {
 
         // counts number of retweeters
@@ -20,8 +19,7 @@ module.exports = {
           profile_image_url: tweetObj.retweeters['0'].profile_image_url
         }
 
-        // klout screen_name and id sends to the cue
-        klout.cue(ref, `${snap.topic}/${snap.image_size}/${id}`, snap.retweeters[length].screen_name)
+        snap.count += 1
 
         ref.child(`${snap.topic}/${snap.image_size}/${id}`).update(snap)
 

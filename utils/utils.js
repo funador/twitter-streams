@@ -3,7 +3,6 @@
 var shorten     = require('expand-url')
 var pagerank    = require('pagerank')
 var size        = require('request-image-size')
-var moment      = require('moment')
 
 // need something in there to block out certain domains
 // like ny-times... how else can you do this?
@@ -15,7 +14,7 @@ module.exports = {
   // Gets root domain for page display
   shorten: (url, cb) => {
     shorten.expand(url, (err, expanded) => {
-      if(err) cb(null, {display_url: null})
+      if(err) console.error("SHOOOORTEN", err)
       if(!err){
         var display_url = expanded.split('/')[2].replace(/www./i, '')
         cb(null, {display_url: display_url})
@@ -26,10 +25,11 @@ module.exports = {
   // determines google packrank of root page
   pageRank: (url, cb) => {
     shorten.expand(url, (err, expanded) => {
-      if(err) if(err) cb(null, {page_rank: null})
+      if(err) console.error("SHORTNBTN", err)
       if(expanded) {
         var url = expanded.split("/").slice(0, 3).join("/")
         pagerank(url, function(err, rank) {
+          if(err) console.error("PAGERANK....", err)
           if(err) {
             cb(null, { page_rank: null })
           }
@@ -67,12 +67,6 @@ module.exports = {
         .replace(/&#39;/g, "'")
         .replace(/&amp;/g, '&')
     return text
-  },
-
-  // true if account age is one year or older
-  accountAge: (age_user) => {
-    if(moment(age_user).fromNow().slice(2, 6) === 'year') return true
-    return false
   },
 
   // filter the tweet for tracked topic

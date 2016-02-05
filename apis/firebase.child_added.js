@@ -1,7 +1,6 @@
 'use strict'
 
 var async       = require('async')
-var klout       = require('../apis/klout.cue')
 var utils       = require('../utils/utils')
 var unfluff     = require('../utils/unfluff')
 var classifier  = require('../utils/classifier')
@@ -12,8 +11,15 @@ module.exports = {
       var tweet = snap.val()
       var id    = snap.key()
 
-      // should I have an else on this?
+
       if(!tweet.checked) {
+
+        // transaction to prevent looping of lookups
+        ref.child(`all/${id}`).transaction((snap) => {
+          snap.checked = true
+          return snap
+        })
+
         async.parallel([
           (cb) => {
             unfluff.unfluff(tweet.url, cb)
@@ -43,18 +49,16 @@ module.exports = {
             tweet.display_url     = unfluffed[2].display_url
             tweet.checked         = true
 
-            // send both retweeter and tweeter to klout cue for scoring
-            klout.cue(ref, `${tweet.topic}/${tweet.image_size}/${id}`, tweet.retweeters[0].screen_name)
-            klout.cue(ref, `${tweet.topic}/${tweet.image_size}/${id}`, tweet.screen_name)
-
             // send to classifier
             classifier.category(id, tweet.topic, unfluffed[0].article)
 
             // set the new ref
             ref.child(`${tweet.topic}/${tweet.image_size}/${id}`).set(tweet)
+
             ref.child(`all/${id}`).update({
               image_size: sized[0].image_size
             })
+
           })
         })
       }

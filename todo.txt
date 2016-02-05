@@ -4,7 +4,8 @@ Finish these three today
 3. look into warning messages
 4. nytimes redirects / this is causing tons of breaks on the two util functions
 5. figure out the stopwords from unfluff
-6. Rip out Klout, it is probably just not worth it for what you are trying to do and doesn't scale
+6. find a template for the front end
+7. Add snippet from article to view (first 200 words?)
 
 ///////////////////////////////////////////
 // possible solution to reconnects       //
