@@ -48,7 +48,7 @@ module.exports = {
         }
       })
       stream.on('error', (err) => {
-        console.error("ERRRRRR", err)
+        console.error("Twitter Stream", err)
       })
     })
   }
