@@ -7,7 +7,7 @@ module.exports = {
       // triggers firebase.child_added
       if(!snap) return tweetObj
 
-      // can I do the logic in here?  Try another transaction?  Or try 3 transactions based on image size?
+      // can I do the logic in here?  Try another transaction? 
       if(snap.image_size) {
 
         // counts number of retweeters

@@ -1,18 +1,3 @@
-1. remove old stories
-3. look into warning messages
-4. nytimes redirects / this is causing tons of breaks on the two util functions
-5. figure out the stopwords from unfluff
+
 6. find a template for the front end
 7. Add snippet from article to view (first 200 words?)
-8. You have a memory leak! Is it related to the Async stuff? 
-
-///////////////////////////////////////////
-// possible solution to reconnects       //
-///////////////////////////////////////////
-
-https://github.com/request/request/issues/311
-request({uri: testUrl, jar: false}, function(error, response, body) {
-    if (!error && response.statusCode == 200) {
-        console.log(body);
-    }
-})

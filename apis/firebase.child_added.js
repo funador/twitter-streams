@@ -11,7 +11,6 @@ module.exports = {
       var tweet = snap.val()
       var id    = snap.key()
 
-
       if(!tweet.checked) {
 
         // transaction to prevent looping of lookups
@@ -38,30 +37,30 @@ module.exports = {
 
             async.parallel([
               (cb) => {
-                console.log(unfluffed[0].image)
                 utils.imageSize(unfluffed[0].image, cb)
               }
             ],
             // sized = cb of previous function
             function(err, sized) {
-              tweet.image_size      = sized[0].image_size
-              tweet.title           = unfluffed[0].title
-              tweet.image           = unfluffed[0].image
-              tweet.description     = unfluffed[0].description
-              tweet.read_mins       = unfluffed[0].read_mins
-              tweet.page_rank       = unfluffed[1].page_rank
-              tweet.display_url     = unfluffed[2].display_url
+              if(sized[0]) {
+                tweet.image_size      = sized[0].image_size
+                tweet.title           = unfluffed[0].title
+                tweet.image           = unfluffed[0].image
+                tweet.description     = unfluffed[0].description
+                tweet.read_mins       = unfluffed[0].read_mins
+                tweet.page_rank       = unfluffed[1].page_rank
+                tweet.display_url     = unfluffed[2].display_url
 
-              // send to classifier
-              classifier.category(id, tweet.topic, unfluffed[0].article)
+                // send to classifier
+                classifier.category(id, tweet.topic, unfluffed[0].article)
 
-              // set the new ref
-              ref.child(`${tweet.topic}/${tweet.image_size}/${id}`).set(tweet)
+                // set the new ref
+                ref.child(`${tweet.topic}/${tweet.image_size}/${id}`).set(tweet)
 
-              ref.child(`all/${id}`).update({
-                image_size: sized[0].image_size
-              })
-
+                ref.child(`all/${id}`).update({
+                  image_size: sized[0].image_size
+                })
+              }
             })
           }
         })

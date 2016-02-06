@@ -39,6 +39,7 @@ module.exports = {
   // takes the size of image and returns a ref
   imageSize: (url, cb) => {
     size(url, function(err, size) {
+      if(err) cb(new Error("failed in imageSize:" + err.message))
       if(!err && size){
         if(size.width > 1000 && size.height > 400) {
           cb(null, {image_size: 'hero'})
