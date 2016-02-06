@@ -1,4 +1,5 @@
-// listens to the all ref.
-// timestamp pulls the last one, indexed on timestamp
-// move all other data into its own buckets.
-// sports, DFS, personal, classifier
+// index by timestamp
+// limit to last one
+// check if image size is available
+// if available remove from both all and specific reloadWithDebugInfo
+// if not available 

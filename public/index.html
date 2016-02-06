@@ -8,13 +8,26 @@
   <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
   <script src="./app.js"></script>
-  <script src="../heros/Heros.directive.js"></script>
 </head>
 
 <body>
   <div ng-controller="storyCtrl" class="stories">
 
-    <div ng-repeat="tweet in nflstories.slice().reverse()" class="col s8 m8">
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <!-- <a href="#!" class="brand-logo">Logo</a> -->
+          <ul class="right hide-on-med-and-down">
+            <li class="active"><a href="collapsible.html">NFL</a></li>
+            <li><a href="sass.html">NBA</a></li>
+            <li><a href="sass.html">MLB</a></li>
+            <li><a href="sass.html">NHL</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div ng-repeat="tweet in nflheros.slice().reverse()" class="col s8 m8">
       <div class="card">
         <div class="card-image story">
           <img class="fade" ng-src="{{tweet.image}}">

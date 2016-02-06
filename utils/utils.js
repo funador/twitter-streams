@@ -4,20 +4,16 @@ var shorten     = require('expand-url')
 var pagerank    = require('pagerank')
 var size        = require('request-image-size')
 
-// need something in there to block out certain domains
-// like ny-times... how else can you do this?
-
 module.exports = {
-
-  // have a problem here with redirects... maybe look at other packages?
 
   // Gets root domain for page display
   shorten: (url, cb) => {
     shorten.expand(url, (err, expanded) => {
-      if(err) console.error("SHOOOORTEN", err)
+      if(err) cb(new Error("failed in Shorten TOP:" + err.message))
       if(!err){
         var display_url = expanded.split('/')[2].replace(/www./i, '')
         cb(null, {display_url: display_url})
+        return
       }
     })
   },
@@ -25,16 +21,15 @@ module.exports = {
   // determines google packrank of root page
   pageRank: (url, cb) => {
     shorten.expand(url, (err, expanded) => {
-      if(err) console.error("SHORTNBTN", err)
+      if(err) cb(new Error("failed in Shorten BTN:" + err.message))
       if(expanded) {
         var url = expanded.split("/").slice(0, 3).join("/")
         pagerank(url, function(err, rank) {
-          if(err) console.error("PAGERANK....", err)
-          if(err) {
-            cb(null, { page_rank: null })
-          }
+          if(err) cb(new Error("failed in Page Rank:" + err.message))
+
           else {
             cb(null, { page_rank: rank })
+            return
           }
         })
       }
@@ -47,16 +42,20 @@ module.exports = {
       if(!err && size){
         if(size.width > 1000 && size.height > 400) {
           cb(null, {image_size: 'hero'})
+          return
         }
         else if(size.width > 600) {
           cb(null, {image_size: 'story'})
+          return
         }
         else {
           cb(null, {image_size: 'tweet'})
+          return
         }
       }
       else {
         cb(null, {image_size: 'tweet'})
+        return
       }
     })
   },

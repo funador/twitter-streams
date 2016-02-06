@@ -31,35 +31,39 @@ module.exports = {
             utils.shorten(tweet.url, cb)
           }
         ],
+
         // unfluffed = cb of previous functions
         (err, unfluffed) => {
-          async.parallel([
-            (cb) => {
-              utils.imageSize(unfluffed[0].image, cb)
-            }
-          ],
-          // sized = cb of previous function
-          function(err, sized) {
-            tweet.image_size      = sized[0].image_size
-            tweet.title           = unfluffed[0].title
-            tweet.image           = unfluffed[0].image
-            tweet.description     = unfluffed[0].description
-            tweet.read_mins       = unfluffed[0].read_mins
-            tweet.page_rank       = unfluffed[1].page_rank
-            tweet.display_url     = unfluffed[2].display_url
-            tweet.checked         = true
+          if(unfluffed[0] && unfluffed[1] && unfluffed[2]) {
 
-            // send to classifier
-            classifier.category(id, tweet.topic, unfluffed[0].article)
+            async.parallel([
+              (cb) => {
+                console.log(unfluffed[0].image)
+                utils.imageSize(unfluffed[0].image, cb)
+              }
+            ],
+            // sized = cb of previous function
+            function(err, sized) {
+              tweet.image_size      = sized[0].image_size
+              tweet.title           = unfluffed[0].title
+              tweet.image           = unfluffed[0].image
+              tweet.description     = unfluffed[0].description
+              tweet.read_mins       = unfluffed[0].read_mins
+              tweet.page_rank       = unfluffed[1].page_rank
+              tweet.display_url     = unfluffed[2].display_url
 
-            // set the new ref
-            ref.child(`${tweet.topic}/${tweet.image_size}/${id}`).set(tweet)
+              // send to classifier
+              classifier.category(id, tweet.topic, unfluffed[0].article)
 
-            ref.child(`all/${id}`).update({
-              image_size: sized[0].image_size
+              // set the new ref
+              ref.child(`${tweet.topic}/${tweet.image_size}/${id}`).set(tweet)
+
+              ref.child(`all/${id}`).update({
+                image_size: sized[0].image_size
+              })
+
             })
-
-          })
+          }
         })
       }
     })

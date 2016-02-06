@@ -9,6 +9,7 @@ angular.module('app', ["firebase"])
   $timeout(function() {
     // send boths sides as k, v in a an object
     // pass in these as elements in an object
+    $scope.nflheros      = $firebaseArray(ref.child("nfl/hero").orderByChild("count").limitToLast(5))
     $scope.nflstories    = $firebaseArray(ref.child("nfl/story").orderByChild("count").limitToLast(5))
     $scope.nfltweets     = $firebaseArray(ref.child("nfl/tweet").orderByChild("count").limitToLast(15))
   })

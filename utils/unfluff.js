@@ -9,7 +9,7 @@ module.exports = {
   unfluff: (url, cb) => {
 
     request(url, (err, res, body) => {
-      if(err) console.error("UNFLUFF", err)
+      if(err) cb(new Error("failed getting something:" + err.message))
       if(!err) {
         var data = unfluff(body)
 
