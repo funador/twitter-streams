@@ -24,6 +24,7 @@
     "pagerank": "^2.0.0",
     "request-image-size": "^1.2.2",
     "short-url": "0.0.1",
-    "twitter": "latest"
+    "twitter": "latest",
+    "unfluff": "^0.11.0"
   }
 }
