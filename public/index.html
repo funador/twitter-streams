@@ -13,19 +13,15 @@
 <body>
   <div ng-controller="storyCtrl" class="stories">
 
-    <div class="navbar-fixed">
+    <!-- <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <!-- <a href="#!" class="brand-logo">Logo</a> -->
           <ul class="right hide-on-med-and-down">
-            <li class="active"><a href="collapsible.html">NFL</a></li>
-            <li><a href="sass.html">NBA</a></li>
-            <li><a href="sass.html">MLB</a></li>
-            <li><a href="sass.html">NHL</a></li>
+            <li ng-repeat="sport in sports" ng-click="updateSport(sport)"><a href="#">{{sport}}</a></li>
           </ul>
         </div>
       </nav>
-    </div>
+    </div> -->
 
     <div ng-repeat="tweet in nflheros.slice().reverse()" class="col s8 m8">
       <div class="card">
@@ -37,8 +33,8 @@
           <p>{{tweet.description}}</p>
         </div>
         <div class="card-action">
-          <p>{{tweet.count}} count</p>
-          <p>{{tweet.read_mins}} min read</p>
+          <!-- <p>{{tweet.count}} count</p> -->
+          <!-- <p>{{tweet.read_mins}} min read</p> -->
           <img ng-src="{{tweet.profile_image_url}}">
           <img ng-repeat="retweeter in tweet.retweeters.slice().reverse()" ng-src="{{retweeter.profile_image_url}}" alt="">
           <a ng-href="{{tweet.url}}">{{tweet.display_url}}</a>
@@ -51,7 +47,7 @@
         <img ng-src="{{tweet.profile_image_url}}" alt="" class="circle">
         <span class="title"><a ng-href="{{tweet.url}}">{{tweet.title}}</a></span>
         <p>{{tweet.description}}</p>
-        <p>{{tweet.count}} count</p>
+        <!-- <p>{{tweet.count}} count</p> -->
         <a ng-href="{{tweet.url}}" class="secondary-content"><i class="material-icons">{{tweet.display_url}}</i></a>
       </li>
     </ul>

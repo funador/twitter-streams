@@ -39,7 +39,11 @@ module.exports = {
   // takes the size of image and returns a ref
   imageSize: (url, cb) => {
     size(url, function(err, size) {
-      if(err) cb(new Error("failed in imageSize:" + err.message))
+      if(err) {
+        cb(new Error("failed in imageSize:" + err.message))
+        return
+
+      }
       if(!err && size){
         if(size.width > 1000 && size.height > 400) {
           cb(null, {image_size: 'hero'})
@@ -56,7 +60,6 @@ module.exports = {
       }
       else {
         cb(null, {image_size: 'tweet'})
-        return
       }
     })
   },
@@ -76,7 +79,7 @@ module.exports = {
     var filtered = ''
 
     for (var i = 0; i < topics.length; i++) {
-      if (tweet.indexOf(topics[i]) > -1){
+      if (tweet.indexOf(topics[i]) > -1) {
           filtered = topics[i]
       }
     }

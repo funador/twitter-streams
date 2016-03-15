@@ -1,3 +1,4 @@
 1. make layout for front expand
 2. add routing to front end
 3. Add snippet from article to view (first 200 words?)
+4. add preloader

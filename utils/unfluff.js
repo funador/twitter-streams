@@ -35,6 +35,8 @@ module.exports = {
             title: data.title
           }
 
+          // obj is not accounted foe here 
+
           if(image && description_length < 100 && title_length < 13 && read_mins) {
             cb(null, obj)
           }
