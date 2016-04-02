@@ -74,5 +74,9 @@ module.exports = {
       }
     }
     return filtered
+  },
+
+  https: (url) => {
+    return url.replace('http', 'https')
   }
 }

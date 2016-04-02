@@ -28,13 +28,15 @@ module.exports = {
           }
 
           var id  = tweet.retweeted_status.id
+          var profile_image_url = utils.https(tweet.retweeted_status.user.profile_image_url)
+          var retweeter_image_url = utils.https(tweet.user.profile_image_url)
 
           var tweetObj = {
-            profile_image_url: tweet.retweeted_status.user.profile_image_url,
+            profile_image_url: profile_image_url,
             screen_name: tweet.retweeted_status.user.screen_name,
             retweeters: [
               {
-                profile_image_url: tweet.user.profile_image_url,
+                profile_image_url: retweeter_image_url,
                 screen_name: tweet.user.screen_name
               }
             ],
