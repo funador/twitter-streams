@@ -10,7 +10,6 @@ module.exports = {
 
       if(!tweet.pagerank_checked) {
 
-        // prevent looping of lookups
         tweet.pagerank_checked = true
         ref.child(`all/pagerank/${id}`).set(tweet)
 

@@ -10,7 +10,6 @@ module.exports = {
 
       if(!tweet.image_size_checked) {
 
-        // prevent looping of lookups
         tweet.image_size_checked = true
         ref.child(`all/imagesize/${id}`).set(tweet)
 

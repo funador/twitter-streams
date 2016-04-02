@@ -11,9 +11,9 @@ module.exports = {
 
       if(!tweet.unfluff_checked) {
 
-        // prevent looping of lookups
         tweet.unfluff_checked = true
         ref.child(`all/unfluff/${id}`).set(tweet)
+        
         unfluff.unfluff(ref, countRef, tweet, id)
       }
     })

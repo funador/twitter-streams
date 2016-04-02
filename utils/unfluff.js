@@ -30,7 +30,9 @@ module.exports = {
           tweet.article = data.text
           tweet.title = data.title
 
-          if(tweet.image && tweet.read_mins && tweet.description.length > 10) {
+          if(tweet.image && tweet.read_mins && tweet.description.length > 10
+                         && data.lang === 'en') {
+
             ref.child(`all/pagerank/${id}`).set(tweet)
 
             countRef.child(`sport/${tweet.topic}`).transaction(function(snap) {

@@ -11,12 +11,13 @@ module.exports = {
 
       if(!tweet.shorten_checked) {
 
-        // prevent looping of lookups
         tweet.shorten_checked = true
         ref.child(`all/shorten/${id}`).set(tweet)
 
         // send to classifier
-        classifier.category(id, tweet.topic, tweet.article)
+        if(tweet.read_mins > 3){
+          classifier.category(id, tweet.topic, tweet.article)
+        }
 
         utils.shorten(ref, tweet, id)
       }

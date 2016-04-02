@@ -50,6 +50,9 @@ module.exports = {
         if(size.width > 600 && size.height > 400) {
           ref.child(`all/shorten/${id}`).set(tweet)
         }
+        if(size.width > 1000 && size.height > 1900) {
+          ref.child(`all/homescreen`).set(tweet)
+        }
       }
     })
   },
