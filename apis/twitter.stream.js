@@ -22,6 +22,7 @@ module.exports = {
         }
 
         if(tweet.retweeted_status && tweet.entities.urls[0] && age < 2015 && tweet.text) {
+
           if(tweet.entities.urls[0].expanded_url){
             var url = tweet.entities.urls[0].expanded_url
           }
@@ -31,14 +32,17 @@ module.exports = {
           var tweetObj = {
             profile_image_url: tweet.retweeted_status.user.profile_image_url,
             screen_name: tweet.retweeted_status.user.screen_name,
-            retweeters: {
-              0: {
+            retweeters: [
+              {
                 profile_image_url: tweet.user.profile_image_url,
                 screen_name: tweet.user.screen_name
-              },
-            },
+              }
+            ],
             timestamp: Date.now(),
-            checked: false,
+            unfluff_checked: false,
+            pagerank_checked: false,
+            image_size_checked: false,
+            shorten_checked: false,
             topic: topic,
             count: 1,
             url: url
@@ -49,7 +53,7 @@ module.exports = {
         }
       })
       stream.on('error', (err) => {
-        console.error("Twitter Stream", err)
+        console.error("Twitter Stream Err------", err)
       })
     })
   }

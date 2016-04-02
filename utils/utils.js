@@ -7,19 +7,22 @@ var size        = require('request-image-size')
 module.exports = {
 
   // Gets root domain for page display
-  shorten: (url, cb) => {
+  shorten: (ref, tweet, id) => {
+    var url = tweet.url
+
     shorten.expand(url, (err, expanded) => {
-      if(err) cb(new Error("failed in Shorten TOP:" + err.message))
-      if(!err){
-        var display_url = expanded.split('/')[2].replace(/www./i, '')
-        cb(null, {display_url: display_url})
-        return
+      if(err) console.error("failed in Shorten TOP:" + err.message)
+      if(!err) {
+        tweet.display_url = expanded.split('/')[2].replace(/www./i, '')
+        ref.child(`${tweet.topic}/${id}`).set(tweet)
       }
     })
   },
 
-  // determines google packrank of root page
-  pageRank: (url, cb) => {
+  // determines google pagerank of root page
+  pageRank: (ref, tweet, id) => {
+    var url = tweet.url
+
     shorten.expand(url, (err, expanded) => {
       if(err) cb(new Error("failed in Shorten BTN:" + err.message))
       if(expanded) {
@@ -28,38 +31,25 @@ module.exports = {
           if(err) cb(new Error("failed in Page Rank:" + err.message))
 
           else {
-            cb(null, { page_rank: rank })
-            return
+            tweet.page_rank = rank
+            ref.child(`all/imagesize/${id}`).set(tweet)
           }
         })
       }
     })
   },
 
-  // takes the size of image and returns a ref
-  imageSize: (url, cb) => {
-    size(url, function(err, size) {
-      if(err) {
-        cb(new Error("failed in imageSize:" + err.message))
-        return
+  // finds size of image
+  imageSize: (ref, tweet, id) => {
+    var url = tweet.image
 
-      }
-      if(!err && size){
-        if(size.width > 1000 && size.height > 400) {
-          cb(null, {image_size: 'hero'})
-          return
+    size(url, function(err, size) {
+      if(err) console.error("failed in imageSize:" + err.message)
+
+      if(!err && size) {
+        if(size.width > 600 && size.height > 400) {
+          ref.child(`all/shorten/${id}`).set(tweet)
         }
-        else if(size.width > 600) {
-          cb(null, {image_size: 'story'})
-          return
-        }
-        else {
-          cb(null, {image_size: 'tweet'})
-          return
-        }
-      }
-      else {
-        cb(null, {image_size: 'tweet'})
       }
     })
   },

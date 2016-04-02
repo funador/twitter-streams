@@ -23,7 +23,7 @@
       </nav>
     </div> -->
 
-    <div ng-repeat="tweet in nflheros.slice().reverse()" class="col s8 m8">
+    <div ng-repeat="tweet in nba.slice().reverse()" class="col s8 m8">
       <div class="card">
         <div class="card-image story">
           <img class="fade" ng-src="{{tweet.image}}">
@@ -33,10 +33,10 @@
           <p>{{tweet.description}}</p>
         </div>
         <div class="card-action">
-          <!-- <p>{{tweet.count}} count</p> -->
-          <!-- <p>{{tweet.read_mins}} min read</p> -->
+          <p>{{tweet.count}} count</p>
+          <p>{{tweet.read_mins}} min read</p>
           <img ng-src="{{tweet.profile_image_url}}">
-          <img ng-repeat="retweeter in tweet.retweeters.slice().reverse()" ng-src="{{retweeter.profile_image_url}}" alt="">
+          <img ng-repeat="retweeter in tweet.retweeters.slice().reverse()" ng-src="{{retweeter.profile_image_url}}">
           <a ng-href="{{tweet.url}}">{{tweet.display_url}}</a>
         </div>
       </div>

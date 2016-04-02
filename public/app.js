@@ -6,33 +6,11 @@ angular.module('app', ["firebase"])
   $scope.sports = ['nfl', 'nba', 'mlb', 'nhl']
 
   let ref = new Firebase("https://twitter-streams.firebaseio.com")
+  $scope.nfl      = $firebaseArray(ref.child("nfl").orderByChild("count").limitToLast(30))
+  $scope.mlb      = $firebaseArray(ref.child("mlb").orderByChild("count").limitToLast(30))
+  $scope.nba      = $firebaseArray(ref.child("nba").orderByChild("count").limitToLast(30))
 
-  $timeout(function() {
 
-    $scope.nflheros      = $firebaseArray(ref.child("nfl/hero").orderByChild("count").limitToLast(6))
-    $scope.nflstories    = $firebaseArray(ref.child("nfl/story").orderByChild("count").limitToLast(5))
-    $scope.nfltweets     = $firebaseArray(ref.child("nfl/tweet").orderByChild("count").limitToLast(15))
-
-    $scope.nbaheros      = $firebaseArray(ref.child("nba/hero").orderByChild("count").limitToLast(6))
-    $scope.nbastories    = $firebaseArray(ref.child("nba/story").orderByChild("count").limitToLast(5))
-    $scope.nbatweets     = $firebaseArray(ref.child("nba/tweet").orderByChild("count").limitToLast(15))
-
-    $scope.activeSport = 'nfl'
-
-    $scope.updateSport = function(sport){
-      if(sport === 'nfl') {
-        $scope.activeSport = 'nfl'
-      }
-      if(sport === 'nba') {
-        $scope.activeSport = 'nba'
-      }
-    }
-    $scope.scopeSport = function(sport){
-      return
-    }
-
-    console.log($scope.activeSport)
-  })
-
+  console.log($scope.mlb.length)
 
 })

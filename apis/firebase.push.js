@@ -2,29 +2,26 @@
 
 module.exports = {
   push: (ref, id, tweetObj) => {
-    ref.child(`all/${id}`).transaction((snap) => {
+    ref.child(`all/unfluff/${id}`).transaction((snap) => {
 
-      // triggers firebase.child_added
+      // triggers unfluff.js
       if(!snap) return tweetObj
 
-      // can I do the logic in here?  Try another transaction? 
-      if(snap.image_size) {
+      ref.child(`${snap.topic}/${id}`).once('value', (snapshot) => {
+        if(snapshot.val()){
+          var tweet = snapshot.val()
+          tweet.count = tweet.count + 1
 
-        // counts number of retweeters
-        var length = Object.keys(snap.retweeters).length
+          var length = Object.keys(tweet.retweeters).length
 
-        // adds a new retweeter
-        snap.retweeters[length] = {
-          screen_name: tweetObj.retweeters['0'].screen_name,
-          profile_image_url: tweetObj.retweeters['0'].profile_image_url
+          tweet.retweeters[length] = {
+            screen_name: tweetObj.retweeters['0'].screen_name,
+            profile_image_url: tweetObj.retweeters['0'].profile_image_url
+          }
+
+          ref.child(`${snap.topic}/${id}`).update(tweet)
         }
-
-        snap.count += 1
-
-        ref.child(`${snap.topic}/${snap.image_size}/${id}`).update(snap)
-
-        return snap
-      }
+      })
     })
   }
 }
