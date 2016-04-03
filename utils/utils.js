@@ -7,7 +7,7 @@ var size        = require('request-image-size')
 module.exports = {
 
   // Gets root domain for page display
-  trimmmed: (ref, tweet, id) => {
+  trimmed: (ref, tweet, id) => {
     var url = tweet.url
 
     shorten.expand(url, (err, expanded) => {
