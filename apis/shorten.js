@@ -19,7 +19,7 @@ module.exports = {
           classifier.category(id, tweet.topic, tweet.article)
         }
 
-        utils.shorten(ref, tweet, id)
+        utils.trimmed(ref, tweet, id)
       }
     })
   }

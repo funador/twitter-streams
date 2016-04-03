@@ -3,7 +3,7 @@
 var utils       = require('../utils/utils')
 var c           = require('../utils/constants')
 var firebase    = require('./firebase.push')
-var topicsArr   = ['nfl', 'nba', 'nhl', 'mlb', 'mls']
+var topicsArr   = ['nfl', 'nba', 'nhl', 'mlb']
 var topics      = topicsArr.join(', ')
 
 module.exports = {

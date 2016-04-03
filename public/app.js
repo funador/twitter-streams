@@ -10,7 +10,6 @@ angular.module('app', ["firebase"])
   $scope.mlb      = $firebaseArray(ref.child("mlb").orderByChild("count").limitToLast(30))
   $scope.nba      = $firebaseArray(ref.child("nba").orderByChild("count").limitToLast(30))
 
-
-  console.log($scope.mlb.length)
+  // ref.remove()
 
 })

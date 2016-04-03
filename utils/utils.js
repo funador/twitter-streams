@@ -7,7 +7,7 @@ var size        = require('request-image-size')
 module.exports = {
 
   // Gets root domain for page display
-  shorten: (ref, tweet, id) => {
+  trimmmed: (ref, tweet, id) => {
     var url = tweet.url
 
     shorten.expand(url, (err, expanded) => {
@@ -26,6 +26,7 @@ module.exports = {
     shorten.expand(url, (err, expanded) => {
       if(err) cb(new Error("failed in Shorten BTN:" + err.message))
       if(expanded) {
+
         var url = expanded.split("/").slice(0, 3).join("/")
         pagerank(url, function(err, rank) {
           if(err) cb(new Error("failed in Page Rank:" + err.message))
