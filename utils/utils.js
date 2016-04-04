@@ -19,6 +19,19 @@ module.exports = {
     })
   },
 
+  // expands the url to use as unique identifier
+  expander: (ref, tweet, id) => {
+    var url = tweet.url
+
+    shorten.expand(url, (err, expanded) => {
+      if(err) console.error("failed in Shorten TOP:" + err.message)
+      if(!err) {
+        tweet.display_url = expanded.split('/')[2].replace(/www./i, '')
+        ref.child(`${tweet.topic}/${id}`).set(tweet)
+      }
+    })
+  },
+
   // determines google pagerank of root page
   pageRank: (ref, tweet, id) => {
     var url = tweet.url
