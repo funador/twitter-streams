@@ -1,1 +1,1 @@
-1.  Make sure a story can only appear once / use url as unique identifier?  Have to expand the url first
+1. Make sure a story can only appear once / use url as unique identifier?  Have to expand the url first
