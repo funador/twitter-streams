@@ -31,7 +31,7 @@ module.exports = {
           tweet.title = data.title
 
           if(tweet.image && tweet.read_mins > 2 && tweet.description.length > 10
-                         && data.lang === 'en') {
+                         && tweet.description.length < 100 && data.lang === 'en') {
 
             ref.child(`all/pagerank/${id}`).set(tweet)
 

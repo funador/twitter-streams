@@ -31,10 +31,8 @@ module.exports = {
         pagerank(url, function(err, rank) {
           if(err) cb(new Error("failed in Page Rank:" + err.message))
 
-          else {
-            tweet.page_rank = rank
-            ref.child(`all/imagesize/${id}`).set(tweet)
-          }
+          tweet.page_rank = rank
+          ref.child(`all/imagesize/${id}`).set(tweet)
         })
       }
     })
@@ -50,9 +48,6 @@ module.exports = {
       if(!err && size) {
         if(size.width > 600 && size.height > 400) {
           ref.child(`all/shorten/${id}`).set(tweet)
-        }
-        if(size.width > 500 && size.height > 1000 && (size.height / size.width > 1.7)) {
-          ref.child(`all/homescreen`).set(tweet)
         }
       }
     })
@@ -82,5 +77,9 @@ module.exports = {
 
   https: (url) => {
     return url.replace('http', 'https')
+  },
+
+  strip: (url) => {
+    return url.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ").replace('httpspbstwimgcommedia', '')
   }
 }

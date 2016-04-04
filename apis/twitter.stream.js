@@ -12,6 +12,7 @@ module.exports = {
     c.client.stream('statuses/filter', {track: topics}, (stream) => {
 
       stream.on('data', (tweet) => {
+
         if(tweet.user){
           var age = tweet.user.created_at.split(' ')[5]
           console.log(tweet.user.screen_name);
