@@ -1,8 +1,9 @@
 'use strict'
 
+// there is a problem here....
 module.exports = {
   remove_child: (ref) => {
-    ref.child('all/unfluff').orderByChild("timestamp").limitToFirst(1).on('child_added', (snap) => {
+    ref.child('all/unfluff').orderByChild("timestamp").limitToFirst(1).on('value', (snap) => {
       var tweet = snap.val()
       var id = snap.key()
       var cutoff = Date.now() - 1 * 60 * 60 * 1000;
