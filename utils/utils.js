@@ -3,6 +3,7 @@
 var shorten     = require('expand-url')
 var pagerank    = require('pagerank')
 var size        = require('request-image-size')
+var push        = require('../apis/firebase.push')
 
 module.exports = {
 
@@ -24,10 +25,15 @@ module.exports = {
     var url = tweet.url
 
     shorten.expand(url, (err, expanded) => {
-      if(err) console.error("failed in Shorten TOP:" + err.message)
+      if(err) console.error("failed in expanded TOP:" + err.message)
       if(!err) {
-        tweet.display_url = expanded.split('/')[2].replace(/www./i, '')
-        ref.child(`${tweet.topic}/${id}`).set(tweet)
+        var id = expanded.replace(/[^\w\s]|_/g, "")
+                         .replace(/\s+/g, " ")
+                         .replace('http', '')
+                         .replace('www', '')
+                         .substring(0, 50)
+
+        push.push(ref, id, tweet)
       }
     })
   },
@@ -90,9 +96,5 @@ module.exports = {
 
   https: (url) => {
     return url.replace('http', 'https')
-  },
-
-  strip: (url) => {
-    return url.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ").replace('httpspbstwimgcommedia', '')
   }
 }

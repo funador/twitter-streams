@@ -50,8 +50,9 @@ module.exports = {
             count: 1,
             url: url
           }
-          if(topic){
-            firebase.push(ref, id, tweetObj)
+          if(topic) {
+            // get expanded url for unique id
+            utils.expander(ref, tweetObj, id)
           }
         }
       })
