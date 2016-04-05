@@ -3,7 +3,12 @@
 // there is a problem here....
 module.exports = {
   remove_child: (ref) => {
-    ref.child('all/unfluff').orderByChild("timestamp").endAt(Date.now() - 60 * 60 * 1000).on('child_added', (snap) => {
+    var cutoff = Date.now() - 60 * 60 * 1000
+
+    ref.child('all/unfluff').orderByChild("timestamp").endAt(cutoff).on('child_added', (snap) => {
+      // I think here you need to loop through and delete
+      // check what comes back in the snap? 
+
       var tweet = snap.val()
       var id = snap.key()
 

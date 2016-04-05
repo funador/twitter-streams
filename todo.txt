@@ -1,1 +1,2 @@
-1. Make sure a story can only appear once / use url as unique identifier?  Have to expand the url first
+1. check remove child to make sure we don't need to loop
+2. Check to make sure everything is coming out of unfluff ok
