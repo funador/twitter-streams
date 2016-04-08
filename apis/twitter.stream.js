@@ -15,7 +15,7 @@ module.exports = {
 
         if(tweet.user){
           var age = tweet.user.created_at.split(' ')[5]
-          // console.log(tweet.user.screen_name)
+          console.log(tweet.user.screen_name)
         }
 
         if(tweet.text){
