@@ -5,7 +5,7 @@ module.exports = {
   remove_child: (ref) => {
     var cutoff = Date.now() - 4 * 60 * 60 * 1000
 
-    ref.child('all/unfluff').orderByChild("timestamp").endAt(cutoff).on('child_added', (snap) => {
+    ref.child('all/unfluff').orderByChild("timestamp").endAt(cutoff).limitToLast(1).on('child_added', (snap) => {
       // I think here you need to loop through and delete
       // check what comes back in the snap?
 

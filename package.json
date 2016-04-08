@@ -24,6 +24,7 @@
     "forever": "^0.15.1",
     "forever-monitor": "^1.7.0",
     "pagerank": "^2.0.0",
+    "request": "^2.70.0",
     "request-image-size": "^1.2.2",
     "short-url": "0.0.1",
     "twitter": "latest",
