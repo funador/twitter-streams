@@ -4,8 +4,6 @@ var shorten     = require('expand-url')
 var pagerank    = require('pagerank')
 var size        = require('request-image-size')
 var push        = require('../apis/firebase.push')
-var uu          = require('url-unshort')
-var Q           = require('q')
 var request     = require('request')
 
 module.exports = {
