@@ -4,6 +4,9 @@ var shorten     = require('expand-url')
 var pagerank    = require('pagerank')
 var size        = require('request-image-size')
 var push        = require('../apis/firebase.push')
+var uu          = require('url-unshort')
+var Q           = require('q')
+var request     = require('request')
 
 module.exports = {
 
@@ -31,8 +34,10 @@ module.exports = {
                          .replace(/\s+/g, " ")
                          .replace('http', '')
                          .replace('www', '')
+                         .replace('com', '')
                          .substring(0, 50)
 
+        // send to firebase to start unfluff
         push.push(ref, id, tweet)
       }
     })
