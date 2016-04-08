@@ -20,7 +20,7 @@ unfluff.unfluff(ref, countRef)
 pagerank.pagerank(ref)
 imagesize.imagesize(ref)
 shorten.shorten(ref)
-// remove.remove_child(ref)
+remove.remove_child(ref)
 
 app.use(express.static('public'))
 
