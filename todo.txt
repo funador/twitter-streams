@@ -1,2 +1,1 @@
-1. check remove child to make sure we don't need to loop
-2. Check to make sure everything is coming out of unfluff ok
+1.  Move remove_child over to its own server

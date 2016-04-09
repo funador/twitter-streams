@@ -28,12 +28,14 @@ module.exports = {
     shorten.expand(url, (err, expanded) => {
       if(err) console.error("failed in expanded TOP:" + err.message)
       if(!err) {
+
+        // strip all punctuation to use as firebase id
         var id = expanded.replace(/[^\w\s]|_/g, "")
                          .replace(/\s+/g, " ")
                          .replace('http', '')
                          .replace('www', '')
                          .replace('com', '')
-                         .substring(0, 50)
+                         .substring(0, 70)
 
         // send to firebase to start unfluff
         push.push(ref, id, tweet)
