@@ -4,7 +4,7 @@ module.exports = {
   remove_child: (ref) => {
     var cutoff = Date.now() - 1 * 60 * 60 * 1000
 
-    ref.child('all/unfluff').orderByChild("timestamp").endAt(cutoff).limitToLast(1).on('child_added', (snap) => {
+    ref.child('all/unfluff').orderByChild("timestamp").endAt(cutoff).limitToLast(2).on('child_added', (snap) => {
 
       var tweet = snap.val()
       var id = snap.key()
