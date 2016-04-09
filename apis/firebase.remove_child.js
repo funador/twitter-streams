@@ -9,7 +9,7 @@ module.exports = {
       var tweet = snap.val()
       var id = snap.key()
 
-      console.log("--------------------------------", tweet)
+      console.log("--------------------------------", tweet.timestamp)
 
       ref.child(`all/unfluff/${id}`).remove()
       ref.child(`all/imagesize/${id}`).remove()
