@@ -32,6 +32,7 @@ module.exports = {
           tweet.read_mins = read_mins
           tweet.article = data.text
           tweet.title = data.title
+          tweet.lang = data.lang
 
           if(tweet.image && tweet.read_mins > 1 && desc_words > 7
                          && desc_words < 100 && data.lang !== 'es') {
