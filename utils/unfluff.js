@@ -13,7 +13,6 @@ module.exports = {
       if(!err) {
         var data = unfluff(body)
 
-
         if(data.title && data.description && data.text && data.image
            && data.title !== data.description) {
 
@@ -34,8 +33,8 @@ module.exports = {
           tweet.title = data.title
           tweet.lang = data.lang
 
-          if(tweet.image && tweet.read_mins > 1 && desc_words > 7
-                         && desc_words < 100 && data.lang !== 'es') {
+          if(tweet.image && tweet.read_mins > 3 && desc_words > 7
+                         && desc_words < 100 && data.lang !== 'es' && data.lang !== 'fr' && data.lang !== 'ru') {
 
             ref.child(`all/pagerank/${id}`).set(tweet)
 

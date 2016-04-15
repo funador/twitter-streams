@@ -27,7 +27,7 @@
     "request": "^2.70.0",
     "request-image-size": "^1.2.2",
     "short-url": "0.0.1",
-    "twitter": "latest",
+    "twit": "^2.2.3",
     "unfluff": "^0.11.0"
   }
 }

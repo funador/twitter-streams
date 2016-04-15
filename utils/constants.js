@@ -1,13 +1,13 @@
 'use strict'
 
 require('dotenv').load('.env')
-var Twitter   = require('twitter')
+var Twit      = require('twit')
 
 module.exports = {
-  client: new Twitter({
+  T: new Twit({
     consumer_key: process.env.CONSUMER_KEY,
     consumer_secret: process.env.CONSUMER_SECRET,
-    access_token_key: process.env.TOKEN_KEY,
+    access_token: process.env.TOKEN_KEY,
     access_token_secret: process.env.TOKEN_SECRET
   })
 }

@@ -4,8 +4,9 @@ module.exports = {
   remove_child: (ref) => {
 
     setInterval(function () {
-      var cutoff = Date.now() - 2 * 60 * 60 * 1000
-      ref.child('all/unfluff').orderByChild("timestamp").endAt(cutoff).limitToLast(10).on('child_added', (snap) => {
+      var cutoff = Date.now() - 4 * 60 * 60 * 1000
+    
+      ref.child('all/unfluff').orderByChild("timestamp").endAt(cutoff).on('child_added', (snap) => {
 
         var tweet = snap.val()
         var id = snap.key()
@@ -18,7 +19,7 @@ module.exports = {
         ref.child(`all/shorten/${id}`).remove()
         ref.child(`${tweet.topic}/${id}`).remove()
       })
-    }, 2000)
+    }, 5000)
 
   }
 }
