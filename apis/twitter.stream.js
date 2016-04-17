@@ -1,15 +1,24 @@
 'use strict'
 
+require('dotenv').load('.env')
+var Twit        = require('twit')
 var utils       = require('../utils/utils')
 var c           = require('../utils/constants')
 var firebase    = require('./firebase.push')
 var topicsArr   = ['nfl', 'nba', 'nhl', 'mlb', 'dfs']
 
+var T = new Twit({
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token: process.env.TOKEN_KEY,
+  access_token_secret: process.env.TOKEN_SECRET
+})
+
 module.exports = {
 
   stream: (ref, countRef) => {
 
-    var stream = c.T.stream('statuses/filter', { track: topicsArr })
+    var stream = T.stream('statuses/filter', { track: topicsArr })
 
     stream.on('tweet', (tweet) => {
 
@@ -52,6 +61,7 @@ module.exports = {
           pagerank_checked: false,
           image_size_checked: false,
           shorten_checked: false,
+          video: false,
           topic: topic,
           count: 1,
           url: url
@@ -70,16 +80,20 @@ module.exports = {
     function alive() {
 
       countRef.child('sported').transaction(function(snap){
-          console.log("Tweets in last minute: ", snap)
+          console.log("Tweets in last 30 secs: ", snap)
           if(snap > 0) return 0
           else {
-            console.log("restarting stream")
+            console.log("stopping stream")
             stream.stop()
-            stream.start()
+            setTimeout(function(){
+              console.log("starting stream");
+              stream.start()
+            }, 2000)
+            return 0
           }
       })
 
-      setTimeout(alive, 60 * 1000)
+      setTimeout(alive, 30 * 1000)
     }
     alive()
 

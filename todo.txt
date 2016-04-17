@@ -1,1 +1,2 @@
-3. switch over to Twit
+4. Write the classifier to pick off the top 20 articles every hour
+5. Fix the damn server!!
