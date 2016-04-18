@@ -58,7 +58,6 @@ module.exports = {
           ],
           timestamp: Date.now(),
           unfluff_checked: false,
-          pagerank_checked: false,
           image_size_checked: false,
           shorten_checked: false,
           video: false,
@@ -77,7 +76,7 @@ module.exports = {
       console.error("Twitter Stream Err------", err)
       console.log("stopping stream");
       stream.stop()
-      
+
       setTimeout(function () {
         console.log('starting stream')
         stream.start()

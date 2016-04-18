@@ -1,7 +1,6 @@
 'use strict'
 
 var shorten     = require('expand-url')
-var pagerank    = require('pagerank')
 var size        = require('request-image-size')
 var push        = require('../apis/firebase.push')
 var request     = require('request')
@@ -40,25 +39,6 @@ module.exports = {
         tweet.id = id
         // send to firebase to start unfluff
         push.push(ref, id, tweet)
-      }
-    })
-  },
-
-  // determines google pagerank of root page
-  pageRank: (ref, tweet, id) => {
-    var url = tweet.url
-
-    shorten.expand(url, (err, expanded) => {
-      if(err) console.error('Error in pageRank expanded', err)
-      if(expanded) {
-
-        var url = expanded.split("/").slice(0, 3).join("/")
-        pagerank(url, function(err, rank) {
-          if(err) console.error('Error in pageRank btn', err)
-          console.log("RANK::::-------------------------", rank )
-          tweet.page_rank = rank
-          ref.child(`all/imagesize/${id}`).set(tweet)
-        })
       }
     })
   },

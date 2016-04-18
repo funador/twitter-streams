@@ -5,7 +5,7 @@ module.exports = {
 
     setInterval(function () {
       var cutoff = Date.now() - 4 * 60 * 60 * 1000
-    
+
       ref.child('all/unfluff').orderByChild("timestamp").endAt(cutoff).on('child_added', (snap) => {
 
         var tweet = snap.val()
@@ -15,7 +15,6 @@ module.exports = {
 
         ref.child(`all/unfluff/${id}`).remove()
         ref.child(`all/imagesize/${id}`).remove()
-        ref.child(`all/pagerank/${id}`).remove()
         ref.child(`all/shorten/${id}`).remove()
         ref.child(`${tweet.topic}/${id}`).remove()
       })
