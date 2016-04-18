@@ -75,27 +75,14 @@ module.exports = {
     })
     stream.on('error', (err) => {
       console.error("Twitter Stream Err------", err)
+      console.log("stopping stream");
+      stream.stop()
+      
+      setTimeout(function () {
+        console.log('starting stream')
+        stream.start()
+      }, 2000)
     })
-
-    function alive() {
-
-      countRef.child('sported').transaction(function(snap){
-          console.log("Tweets in last 30 secs: ", snap)
-          if(snap > 0) return 0
-          else {
-            console.log("stopping stream")
-            stream.stop()
-            setTimeout(function(){
-              console.log("starting stream");
-              stream.start()
-            }, 2000)
-            return 0
-          }
-      })
-
-      setTimeout(alive, 30 * 1000)
-    }
-    alive()
 
   }
 }

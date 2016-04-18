@@ -14,10 +14,10 @@ module.exports = {
 
      twitter.stream(ref, countRef)
      unfluff.unfluff(ref, countRef)
-     pagerank.pagerank(ref)
+    //  pagerank.pagerank(ref)
      imagesize.imagesize(ref)
      shorten.shorten(ref)
-     remove.remove_child(ref)
-     
+    //  remove.remove_child(ref)
+
    }
  }

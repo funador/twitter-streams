@@ -43,7 +43,7 @@ module.exports = {
           if(tweet.image && tweet.read_mins > 3 && desc_words > 7
                          && desc_words < 100 && data.lang !== 'es' && data.lang !== 'fr' && data.lang !== 'ru') {
 
-            ref.child(`all/pagerank/${id}`).set(tweet)
+            ref.child(`all/imagesize/${id}`).set(tweet)
 
             countRef.child(`sport/${tweet.topic}`).transaction(function(snap) {
               return snap + 1

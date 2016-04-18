@@ -49,13 +49,13 @@ module.exports = {
     var url = tweet.url
 
     shorten.expand(url, (err, expanded) => {
-      if(err) console.error('Error in pageRank top', err)
+      if(err) console.error('Error in pageRank expanded', err)
       if(expanded) {
 
         var url = expanded.split("/").slice(0, 3).join("/")
         pagerank(url, function(err, rank) {
           if(err) console.error('Error in pageRank btn', err)
-
+          console.log("RANK::::-------------------------", rank )
           tweet.page_rank = rank
           ref.child(`all/imagesize/${id}`).set(tweet)
         })
