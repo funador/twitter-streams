@@ -9,7 +9,6 @@ module.exports = {
       var id    = snap.key()
 
       if(!tweet.image_size_checked) {
-        console.log("id--------", id);
         tweet.image_size_checked = true
         ref.child(`all/imagesize/${id}`).set(tweet)
 

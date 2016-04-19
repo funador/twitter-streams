@@ -6,7 +6,7 @@ module.exports = {
     setInterval(function () {
       var cutoff = Date.now() - 4 * 60 * 60 * 1000
 
-      ref.child('all/unfluff').orderByChild("timestamp").endAt(cutoff).on('child_added', (snap) => {
+      ref.child('all/unfluff').orderByChild("timestamp").endAt(cutoff).limitToLast(10).on('child_added', (snap) => {
 
         var tweet = snap.val()
         var id = snap.key()
