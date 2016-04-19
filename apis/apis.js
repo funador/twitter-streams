@@ -16,6 +16,5 @@ module.exports = {
      imagesize.imagesize(ref)
      shorten.shorten(ref)
      remove.remove_child(ref)
-
    }
  }

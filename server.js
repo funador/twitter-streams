@@ -15,3 +15,5 @@ app.listen(process.env.PORT || 3007)
 console.log('Listening on 3007')
 
 apis.apis(ref, countRef)
+
+// ref.remove()

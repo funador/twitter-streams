@@ -7,13 +7,3 @@
   -webkit-filter: grayscale(0.4) !important;
   transition: all 450ms ease;
 }
-
-.card-title {
-  background:rgba(0, 0, 0, 0.7);
-  padding: 5px 10px !important;
-  font-size: 1.3em;
-}
-
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
-  color: #039be5
-}
