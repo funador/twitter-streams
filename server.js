@@ -14,6 +14,12 @@ var countRef      = new Firebase('https://total-counts.firebaseio.com/')
 app.listen(process.env.PORT || 3007)
 console.log('Listening on 3007')
 
+app.use(express.static('public'))
+
+app.all("/*", (req, res) => {
+  res.sendfile('./public/index.html')
+})
+
 apis.apis(ref, countRef)
 
 // ref.remove()
