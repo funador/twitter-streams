@@ -80,7 +80,7 @@ module.exports = {
       setTimeout(function () {
         console.log('starting stream')
         stream.start()
-      }, 10000)
+      }, 60000)
     })
 
   }
