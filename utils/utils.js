@@ -38,6 +38,7 @@ module.exports = {
                          .substring(0, 70)
 
         tweet.id = id
+        tweet.url = expanded
         // send to firebase to start unfluff
         push.push(ref, id, tweet)
       }

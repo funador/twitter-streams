@@ -2,3 +2,4 @@
 7. Have a look at NBA.com specific pages to see if there are secondary images I can load
 8. Block Youtube links from showing up
 9. strip out anything with <  x>
+10. Send email on error

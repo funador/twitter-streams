@@ -1,6 +1,6 @@
 'use strict'
 
-require('events').EventEmitter.prototype._maxListeners = 100;
+require('events').EventEmitter.prototype._maxListeners = 200;
 
 var express       = require('express')
 var app           = express()

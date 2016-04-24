@@ -74,13 +74,7 @@ module.exports = {
     })
     stream.on('error', (err) => {
       console.error("Twitter Stream Err------", err)
-      console.log("stopping stream");
-      stream.stop()
-
-      setTimeout(function () {
-        console.log('starting stream')
-        stream.start()
-      }, 60000)
+      throw err
     })
 
   }
