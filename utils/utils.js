@@ -15,6 +15,7 @@ module.exports = {
       if(err) console.error("failed in Shorten TOP:" + err.message)
       if(!err) {
         tweet.display_url = expanded.split('/')[2].replace(/www./i, '')
+        console.log("adding tweet-------------: ", tweet.topic)
         ref.child(`${tweet.topic}/${id}`).set(tweet)
       }
     })

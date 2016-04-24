@@ -1,7 +1,5 @@
 'use strict'
 
-var async = require('async')
-
 module.exports = {
   remove_child: (ref) => {
 
@@ -20,7 +18,7 @@ module.exports = {
             } else {
               console.log("deleting--------:", tweet[id].topic)
             }
-          };
+          }
 
           ref.child(`all/unfluff/${id}`).remove()
           ref.child(`all/imagesize/${id}`).remove()
