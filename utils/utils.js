@@ -65,6 +65,8 @@ module.exports = {
     text.replace(/&nbsp;/g, " ")
         .replace(/&#39;/g, "'")
         .replace(/&amp;/g, '&')
+        .replace(/&quot;/g, "'")
+
     return text
   },
 

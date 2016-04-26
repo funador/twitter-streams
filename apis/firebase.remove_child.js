@@ -4,7 +4,7 @@ module.exports = {
   remove_child: (ref) => {
 
     setInterval(function () {
-      var cutoff = Date.now() - 4 * 60 * 60 * 1000
+      var cutoff = Date.now() - 6 * 60 * 60 * 1000
 
       // do a transacton?
       ref.child('all/unfluff').orderByChild("timestamp").endAt(cutoff).limitToLast(1).once('value', (snap) => {
