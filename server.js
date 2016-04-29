@@ -22,4 +22,7 @@ app.all("/*", (req, res) => {
 
 apis.apis(ref, countRef)
 
-// ref.remove()
+// jankiness to restart the server every hour
+setTimeout(function() {
+  throw error
+}, 60 * 60 * 1000)
