@@ -25,4 +25,4 @@ apis.apis(ref, countRef)
 // jankiness to restart the server every hour
 setTimeout(function() {
   throw error
-}, 60 * 60 * 1000)
+}, 20 * 60 * 1000)

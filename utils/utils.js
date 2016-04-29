@@ -29,6 +29,10 @@ module.exports = {
       if(err) console.error("failed in expanded TOP:" + err.message)
       if(!err) {
 
+        // check to make sure it does not include domains we want to ignore
+        var ignoredDomains = ['youtube', 'itunes']
+        var pushed = false
+
         // strip all punctuation to use as firebase id
         var id = expanded.replace(/[^\w\s]|_/g, "")
                          .replace(/\s+/g, " ")
@@ -40,7 +44,15 @@ module.exports = {
         tweet.id = id
         tweet.url = expanded
         // send to firebase to start unfluff
-        push.push(ref, id, tweet)
+        for (var i = 0; i < ignoredDomains.length; i++) {
+          if (id.indexOf(ignoredDomains[i]) === -1) {
+            pushed = true
+          }
+        }
+
+        if(pushed) {
+          push.push(ref, id, tweet)
+        }
       }
     })
   },

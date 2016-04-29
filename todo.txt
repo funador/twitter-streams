@@ -1,7 +1,10 @@
 4. Write the classifier to pick off the top 20 articles every hour
-7. Have a look at NBA.com specific pages to see if there are secondary images I can load
-8. Block Youtube/iTunes links from showing up (collect )
-9. strip out anything with <  x>
-10. Still have some articles being double added
-11. failed in expanded TOP:Parse Error make that throw an error
-12. Trim out nba game recaps
+13. Classify more articles by hand
+
+
+14. Collect video information
+
+
+15.Try/Catch on all 4 deletes
+16. Figure out why everything is not being deleted on all dates
+17. Make sure retweeters are not added more than once

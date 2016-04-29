@@ -26,12 +26,13 @@ module.exports = {
             var image = data.image
           }
 
-          //need to fix this
-          // var videos = data.videos[0]
-          //
-          // if(videos.src) {
-          //   tweet.video = true
-          // }
+          if(data.videos[0]) {
+            if(data.videos[0].src) {
+              if(data.videos[0].src.length) {
+                tweet.video = true
+              }
+            }
+          }
 
           tweet.description = data.description
           tweet.image = image || false
