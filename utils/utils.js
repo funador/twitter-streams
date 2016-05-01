@@ -74,10 +74,17 @@ module.exports = {
 
   // replace tags with text
   cleanText: (text) => {
-    text.replace(/&nbsp;/g, " ")
-        .replace(/&#39;/g, "'")
-        .replace(/&amp;/g, '&')
-        .replace(/&quot;/g, "'")
+    var re1 = new RegExp('&#39;', 'g');
+    text = text.replace(re1, "'");
+
+    var re2 = new RegExp('&nbsp;', 'g');
+    text = text.replace(re2, " ");
+
+    var re3 = new RegExp('&amp;', 'g');
+    text = text.replace(re3, "&");
+
+    var re4 = new RegExp('&quot;', 'g');
+    text = text.replace(re4, "'");
 
     return text
   },

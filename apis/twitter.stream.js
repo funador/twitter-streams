@@ -5,7 +5,7 @@ var Twit        = require('twit')
 var utils       = require('../utils/utils')
 var c           = require('../utils/constants')
 var firebase    = require('./firebase.push')
-var topicsArr   = ['nfl', 'nba', 'nhl', 'mlb', 'dfs']
+var topicsArr   = ['nfl', 'nba', 'nhl', 'mlb']
 
 var T = new Twit({
   consumer_key: process.env.CONSUMER_KEY,

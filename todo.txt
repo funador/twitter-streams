@@ -1,10 +1,3 @@
 4. Write the classifier to pick off the top 20 articles every hour
 13. Classify more articles by hand
-
-
-14. Collect video information
-
-
-15.Try/Catch on all 4 deletes
-16. Figure out why everything is not being deleted on all dates
 17. Make sure retweeters are not added more than once
