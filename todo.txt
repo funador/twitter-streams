@@ -1,5 +1,4 @@
 4. Write the classifier to pick off the top 20 articles every hour
 13. Classify more articles by hand
 17. Make sure retweeters are not added more than once
-18. change clean text to include both
-19. 
+19. run articles through your own apis

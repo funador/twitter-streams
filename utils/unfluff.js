@@ -18,7 +18,7 @@ module.exports = {
 
           var description        = utils.cleanText(data.description)
           var title              = utils.cleanText(data.title)
-          var read_mins          = Math.ceil(data.text.split(' ').length / 200)
+          var read_mins          = Math.ceil(data.text.split(' ').length / 250)
           var desc_words         = description.split(' ').length
 
 
@@ -30,6 +30,7 @@ module.exports = {
             if(data.videos[0].src) {
               if(data.videos[0].src.length) {
                 tweet.video = true
+                console.log("video added!!!!");
               }
             }
           }

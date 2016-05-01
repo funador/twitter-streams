@@ -12,6 +12,7 @@ module.exports = {
           var tweet = snapshot.val()
           tweet.count = tweet.count + 1
 
+          // you could do the check here to make sure that the retweeter does not already exist. 
           var length = Object.keys(tweet.retweeters).length
 
           tweet.retweeters[length] = {
