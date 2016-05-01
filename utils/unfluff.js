@@ -43,7 +43,7 @@ module.exports = {
 
           if(tweet.image && tweet.read_mins > 3 && desc_words > 7
                          && desc_words < 100 && data.lang !== 'es' && data.lang !== 'fr' && data.lang !== 'ru'
-                         && data.lang !== 'fi') {
+                         && data.lang !== 'fi' && data.lang !== 'tr') {
 
             ref.child(`all/imagesize/${id}`).set(tweet)
 
