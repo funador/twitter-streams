@@ -74,17 +74,15 @@ module.exports = {
 
   // replace tags with text
   cleanText: (text) => {
-    var re1 = new RegExp('&#39;', 'g');
-    text = text.replace(re1, "'");
+    text.replace(/&nbsp;/g, " ")
+        .replace(/&#39;/g, "'")
+        .replace(/&amp;/g, '&')
+        .replace(/&quot;/g, "'")
 
-    var re2 = new RegExp('&nbsp;', 'g');
-    text = text.replace(re2, " ");
-
-    var re3 = new RegExp('&amp;', 'g');
-    text = text.replace(re3, "&");
-
-    var re4 = new RegExp('&quot;', 'g');
-    text = text.replace(re4, "'");
+    text = text.replace(new RegExp('&#39;', 'g'), "'")
+    text = text.replace(new RegExp('&nbsp;', 'g'), " ")
+    text = text.replace(new RegExp('&amp;', 'g'), "&")
+    text = text.replace(new RegExp('&quot', 'g'), "'")
 
     return text
   },
