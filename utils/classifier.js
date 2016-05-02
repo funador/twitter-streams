@@ -4,7 +4,7 @@ var Firebase    = require('firebase')
 var ref         = new Firebase('https://nodeclassifier.firebaseio.com/')
 
 module.exports = {
-  category: (id, tag, article) => {
-    ref.child(`${tag}/${id}`).set({ article: article })
+  category: (title, tag, article) => {
+    ref.child(`${tag}/${title}`).set({ article: article, title: title, timestamp: Date.now() })
   }
 }

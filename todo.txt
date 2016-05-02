@@ -1,4 +1,8 @@
+First release
+19. run articles through your own apis, get apis working properly
+
+Long Term Solution
 4. Write the classifier to pick off the top 20 articles every hour
-13. Classify more articles by hand
-17. Make sure retweeters are not added more than once
-19. run articles through your own apis
+5. Rebuild algos every night
+6. Start collections based off of team hashtags
+20. before adding story make sure that title does not exist elsewhere? (this is super intensive)

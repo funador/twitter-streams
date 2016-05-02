@@ -15,7 +15,7 @@ module.exports = {
           var splitTime = time.split(' ')
           var hours = parseInt(splitTime[0])
 
-          if(hours > 4 && splitTime[1] === 'hours' || splitTime[1] === 'days' || splitTime[1] === 'day') {
+          if(hours > 8 && splitTime[1] === 'hours' || splitTime[1] === 'days' || splitTime[1] === 'day') {
 
             var onComplete = function(err) {
               if (err) {

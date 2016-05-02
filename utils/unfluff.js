@@ -30,7 +30,6 @@ module.exports = {
             if(data.videos[0].src) {
               if(data.videos[0].src.length) {
                 tweet.video = true
-                console.log("video added!!!!");
               }
             }
           }

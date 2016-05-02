@@ -11,16 +11,25 @@ module.exports = {
         if(snapshot.val()){
           var tweet = snapshot.val()
           tweet.count = tweet.count + 1
-
-          // you could do the check here to make sure that the retweeter does not already exist. 
+          var toAdd = true
           var length = Object.keys(tweet.retweeters).length
 
-          tweet.retweeters[length] = {
-            screen_name: tweetObj.retweeters['0'].screen_name,
-            profile_image_url: tweetObj.retweeters['0'].profile_image_url
+          // check to make sure retweeter is not already recorded
+          for (var i = 0; i < length; i++) {
+            if(tweetObj.retweeters[0].screen_name === tweet.retweeters[i].screen_name) {
+              console.log("tweeter already exists");
+              toAdd = false
+            }
           }
 
-          ref.child(`${snap.topic}/${id}`).update(tweet)
+          if(toAdd) {
+            tweet.retweeters[length] = {
+              screen_name: tweetObj.retweeters['0'].screen_name,
+              profile_image_url: tweetObj.retweeters['0'].profile_image_url
+            }
+            console.log("adding retweeter-------------------");
+            ref.child(`${snap.topic}/${id}`).update(tweet)
+          }
         }
       })
     })

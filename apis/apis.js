@@ -10,7 +10,6 @@ var c             = require('../utils/constants')
 module.exports = {
 
    apis: (ref, countRef) => {
-
      twitter.stream(ref, countRef)
      unfluff.unfluff(ref, countRef)
      imagesize.imagesize(ref)

@@ -15,8 +15,8 @@ module.exports = {
         ref.child(`all/shorten/${id}`).set(tweet)
 
         // send to classifier
-        if(tweet.read_mins > 3 && tweet.lang === 'en'){
-          classifier.category(id, tweet.topic, tweet.article)
+        if(tweet.read_mins > 3 && tweet.lang === 'en') {
+          classifier.category(tweet.title, tweet.topic, tweet.article)
         }
 
         utils.trimmed(ref, tweet, id)

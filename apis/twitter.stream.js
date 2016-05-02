@@ -21,7 +21,7 @@ module.exports = {
     var stream = T.stream('statuses/filter', { track: topicsArr })
 
     stream.on('tweet', (tweet) => {
-
+      
       // keep track of how many tweets are coming in
       countRef.child('sported').transaction(function(snap){
         if(!snap) return 1
