@@ -30,7 +30,7 @@ module.exports = {
       if(!err) {
 
         // check to make sure it does not include domains we want to ignore
-        var ignoredDomains = ['youtube', 'itunes']
+        var ignoredDomains = ['youtube', 'itunes', 'apple']
         var pushed = false
 
         // strip all punctuation to use as firebase id
@@ -39,7 +39,7 @@ module.exports = {
                          .replace('http', '')
                          .replace('www', '')
                          .replace('com', '')
-                         .substring(0, 70)
+                         .substring(0, 45)
 
         tweet.id = id
         tweet.url = expanded

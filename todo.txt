@@ -1,5 +1,7 @@
 First release
 19. run articles through your own apis, get apis working properly
+21. Do not allow root domains to show
+22. trim the id down, so you dont have duplicates
 
 Long Term Solution
 4. Write the classifier to pick off the top 20 articles every hour
