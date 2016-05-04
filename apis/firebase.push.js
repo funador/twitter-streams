@@ -27,7 +27,7 @@ module.exports = {
               screen_name: tweetObj.retweeters['0'].screen_name,
               profile_image_url: tweetObj.retweeters['0'].profile_image_url
             }
-            console.log("adding retweeter-------------------");
+            
             ref.child(`${snap.topic}/${id}`).update(tweet)
           }
         }
