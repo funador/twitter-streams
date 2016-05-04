@@ -1,10 +1,9 @@
 First release
 19. run articles through your own apis, get apis working properly
 21. Do not allow root domains to show
-22. trim the id down, so you dont have duplicates
+22. Have to somehow make sure the titles are not the same on articles, then just merge them.  This will be an expensive operation.
 
 Long Term Solution
 4. Write the classifier to pick off the top 20 articles every hour
 5. Rebuild algos every night
 6. Start collections based off of team hashtags
-20. before adding story make sure that title does not exist elsewhere? (this is super intensive)

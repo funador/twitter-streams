@@ -16,7 +16,7 @@ module.exports = {
 
         // send to classifier
         if(tweet.read_mins > 3 && tweet.lang === 'en') {
-          classifier.category(tweet.title, tweet.topic, tweet.article, tweet)
+          classifier.category(id, tweet.topic, tweet.article, tweet)
         }
 
         utils.trimmed(ref, tweet, id)
