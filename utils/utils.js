@@ -39,7 +39,7 @@ module.exports = {
                          .replace('http', '')
                          .replace('www', '')
                          .replace('com', '')
-                         .substring(0, 45)
+                         .substring(0, 44)
 
         tweet.id = id
         tweet.url = expanded
