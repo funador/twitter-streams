@@ -24,6 +24,7 @@
     "forever": "^0.15.1",
     "forever-monitor": "^1.7.0",
     "moment": "^2.13.0",
+    "python-shell": "^0.4.0",
     "request": "^2.70.0",
     "request-image-size": "^1.2.2",
     "short-url": "0.0.1",

@@ -21,7 +21,7 @@ module.exports = {
     var stream = T.stream('statuses/filter', { track: topicsArr })
 
     stream.on('tweet', (tweet) => {
-      
+
       // keep track of how many tweets are coming in
       countRef.child('sported').transaction(function(snap){
         if(!snap) return 1
@@ -30,7 +30,7 @@ module.exports = {
 
       if(tweet.user){
         var age = tweet.user.created_at.split(' ')[5]
-        console.log(tweet.user.screen_name)
+        // console.log(tweet.user.screen_name)
       }
 
       if(tweet.text){
@@ -60,6 +60,7 @@ module.exports = {
           unfluff_checked: false,
           image_size_checked: false,
           shorten_checked: false,
+          classified_checked: false,
           video: false,
           topic: topic,
           count: 1,

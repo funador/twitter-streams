@@ -19,6 +19,7 @@ module.exports = {
           classifier.category(id, tweet.topic, tweet.article, tweet)
         }
 
+        // this needs to get sent to sport classifier instead
         utils.trimmed(ref, tweet, id)
       }
     })

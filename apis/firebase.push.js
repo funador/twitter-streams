@@ -17,7 +17,6 @@ module.exports = {
           // check to make sure retweeter is not already recorded
           for (var i = 0; i < length; i++) {
             if(tweetObj.retweeters[0].screen_name === tweet.retweeters[i].screen_name) {
-              console.log("tweeter already exists");
               toAdd = false
             }
           }
@@ -27,7 +26,7 @@ module.exports = {
               screen_name: tweetObj.retweeters['0'].screen_name,
               profile_image_url: tweetObj.retweeters['0'].profile_image_url
             }
-            
+
             ref.child(`${snap.topic}/${id}`).update(tweet)
           }
         }
