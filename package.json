@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "preinstall": "python get-pip.py && pip install -r requirements.txt",
     "start": "forever server.js"
   },
   "repository": {
