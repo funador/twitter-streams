@@ -4,18 +4,17 @@ from naiveBayesClassifier.classifier import Classifier
 import csv
 import sys
 
-newsTrainer = Trainer(tokenizer)
+sportsTrainer = Trainer(tokenizer)
 
 with open('./utils/python-classifier/data.csv') as csvfile:
-    newsSet = csv.DictReader(csvfile)
-    for news in newsSet:
-        newsTrainer.train(news['text'], news['category'])
+    sportsSet = csv.DictReader(csvfile)
+    for article in sportsSet:
+        sportsTrainer.train(article['text'], article['category'])
 
-newsClassifier = Classifier(newsTrainer.data, tokenizer)
+newsClassifier = Classifier(sportsTrainer.data, tokenizer)
 
-unknownInstance = sys.argv[1]
-# toCheck = unknownInstance.read()
+toCheck = sys.argv[1]
 
-classification = newsClassifier.classify(unknownInstance)
+classification = newsClassifier.classify(toCheck)
 
 print classification
