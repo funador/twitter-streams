@@ -2,10 +2,7 @@ First release
 19. run articles through your own apis, get apis working properly
 21. Do not allow root domains to show
 22. Have to somehow make sure the titles are not the same on articles, then just merge them.  This will be an expensive operation.
-
-API
--figure out how to run the script in Python
--Set thresholds
+23. itunes is still getting through
 
 Long Term Solution
 4. Write the classifier to pick off the top 20 articles every hour

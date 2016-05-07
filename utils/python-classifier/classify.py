@@ -6,7 +6,7 @@ import sys
 
 sportsTrainer = Trainer(tokenizer)
 
-with open('./utils/python-classifier/data.csv') as csvfile:
+with open('./utils/python-classifier/data2.csv') as csvfile:
     sportsSet = csv.DictReader(csvfile)
     for article in sportsSet:
         sportsTrainer.train(article['text'], article['category'])
