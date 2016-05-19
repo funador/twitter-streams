@@ -4,6 +4,8 @@ First release
 22. Have to somehow make sure the titles are not the same on articles, then just merge them.  This will be an expensive operation.
 23. itunes is still getting through
 24. Why is title not getting saved? Is there another version running somewhere?
+25. Heroku memory (pull out the recent analysis stuff or change it to use other code )
+
 
 Long Term Solution
 4. Write the classifier to pick off the top 20 articles every hour

@@ -12,13 +12,13 @@ module.exports = {
       var tweet = snap.val()
       var id    = snap.key()
 
-      PythonShell.run('./utils/python-classifier/classify.py', {args: [tweet.article]}, function (err, results) {
-        if (err) throw err;
-        console.log("----------------------");
-        console.log(tweet.article.substring(0, 100))
-        console.log('results: %j', results);
-        console.log("----------------------");
-      });
+      // PythonShell.run('./utils/python-classifier/classify.py', {args: [tweet.article]}, function (err, results) {
+      //   if (err) throw err;
+      //   console.log("----------------------");
+      //   console.log(tweet.article.substring(0, 100))
+      //   console.log('results: %j', results);
+      //   console.log("----------------------");
+      // });
     })
   }
 }
