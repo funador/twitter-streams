@@ -17,9 +17,7 @@
     "request-image-size": "^1.2.2",
     "twit": "^2.2.5",
     "unfluff": "^1.1.0",
-    "url-expand": "^0.1.5"
-  },
-  "devDependencies": {
+    "url-expand": "^0.1.5",
     "babel-cli": "^6.11.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-stage-2": "^6.11.0",
