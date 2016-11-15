@@ -5,8 +5,8 @@
   "main": "lib/server.js",
   "scripts": {
     "serve": "nodemon lib/twitter.js --exec babel-node --presets es2015,stage-2",
-    "build": "babel lib -d dist --presets es2015,stage-2 && regenerator --include-runtime dist/twitter.js > dist/twitter6.js",
-    "start": "forever dist/twitter6.js"
+    "build": "babel lib -d dist --presets es2015,stage-2 && regenerator --include-runtime dist/twitter.js > dist/twitterES6.js",
+    "start": "forever dist/twitterES6.js"
   },
   "author": "Jesse Heaslip <jesse.heaslip@gmail.com>",
   "license": "MIT",
