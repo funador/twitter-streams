@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .env
 
 # Logs
@@ -34,3 +35,9 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+=======
+/node_modules
+/dist
+todos.txt
+.env
+>>>>>>> 38df6d11705c191f5cc118a3be55157e4ccd0879
