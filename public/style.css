@@ -1,9 +1,0 @@
-.story img.fade, .hero img.fade {
-  -webkit-filter: grayscale(0.7) !important;
-  transition: all 3s ease;
-}
-
-.story:hover img.fade, .hero:hover img.fade {
-  -webkit-filter: grayscale(0.4) !important;
-  transition: all 450ms ease;
-}

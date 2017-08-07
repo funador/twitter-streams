@@ -6,7 +6,6 @@ First release
 24. Why is title not getting saved? Is there another version running somewhere?
 25. Heroku memory (pull out the recent analysis stuff or change it to use other code )
 
-
 Long Term Solution
 4. Write the classifier to pick off the top 20 articles every hour
 5. Rebuild algos every night
