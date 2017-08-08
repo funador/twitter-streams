@@ -1,4 +1,4 @@
 /node_modules
-todo.txt
 .env
-twitter-streams-40b23-firebase-adminsdk-id7nc-3a77b0c1a7.json
+twitter-streams-firebase.json
+variables.env.now
