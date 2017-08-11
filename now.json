@@ -1,0 +1,6 @@
+{
+	"dotenv": "variables.env.now",
+	"files": [
+	  "twitter-streams-firebase.json"
+	]
+}
