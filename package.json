@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "twitter.js",
   "scripts": {
-    "start": "forever lib/app.js",
-    "dev": "nodemon lib/app.js"
+    "start": "forever lib/server.js",
+    "dev": "nodemon lib/server.js"
   },
   "repository": {
     "type": "git",
