@@ -1,10 +1,10 @@
 {
   "name": "twitter-streams",
   "version": "1.0.0",
-  "description": "twitter.js",
+  "description": "analyzing twitter content",
   "scripts": {
-    "start": "forever lib/server.js",
-    "dev": "nodemon lib/server.js"
+    "start": "forever server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -24,9 +24,12 @@
     "firebase-admin": "^5.1.0",
     "forever": "^0.15.1",
     "forever-monitor": "^1.7.0",
+    "moment": "^2.18.1",
+    "node_klout": "^0.3.1",
     "probe-image-size": "^3.1.0",
     "request": "^2.70.0",
     "request-promise": "^4.2.1",
+    "sentiment": "^4.0.1",
     "short-url": "0.0.1",
     "twit": "^2.2.3",
     "unfluff": "^0.11.0",
