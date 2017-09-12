@@ -3,5 +3,6 @@
 .DS_Store
 .env
 twitter-streams-firebase.json
+twitter-streams-firebase-sentiment.json
 variables.env.now
 todo.txt

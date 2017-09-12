@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const { initExtract } = require('./lib/init-extract')
-const { deleteOldStories } = require('./lib/delete-old-stories')
+const { deleteOldData } = require('./lib/delete-old-data')
 const { trackSentiment } = require('./lib/track-sentiment')
 const { trackSothbeys } = require('./lib/track-sothbeys')
 const { stream, firebase } = require('./lib/config')
@@ -16,14 +16,13 @@ stream
   .on('tweet', tweet => {
 
     if(linkCheck(tweet)) {
-
       console.log(tweet.user.screen_name)
       initExtract(tweet)
     }
   })
 
-  .on('error', err => console.error(err))
+  .on('error', err => console.error("ERR in stream", err))
 
-deleteOldStories()
+deleteOldData()
 trackSentiment()
 // trackSothbeys()
