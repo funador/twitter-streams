@@ -1,10 +1,11 @@
 require('dotenv').config()
 
 const { initExtract } = require('./lib/init-extract')
-const { deleteOldData } = require('./lib/delete-old-data')
+const { deleteOldData } = require('./lib/delete-old-stories')
+const { deleteStaleKlouters } = require('./lib/delete-stale-klouters')
 const { trackSentiment } = require('./lib/track-sentiment')
 const { trackSothbeys } = require('./lib/track-sothbeys')
-const { stream, firebase } = require('./lib/config')
+const { stream } = require('./lib/config')
 const { linkCheck } = require('./lib/utils') 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -23,6 +24,7 @@ stream
 
   .on('error', err => console.error("ERR in stream", err))
 
-deleteOldData()
+deleteOldStories()
 trackSentiment()
+deleteStaleKlouters()
 // trackSothbeys()
