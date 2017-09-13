@@ -30,7 +30,6 @@
     "request-promise": "^4.2.1",
     "sentence-tokenizer": "0.0.8",
     "sentiment": "^4.0.1",
-    "short-url": "0.0.1",
     "syllable": "^2.2.0",
     "twit": "^2.2.3",
     "unfluff": "^0.11.0",

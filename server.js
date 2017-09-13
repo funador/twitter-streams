@@ -1,31 +1,14 @@
 require('dotenv').config()
 
-const { initExtract } = require('./lib/init-extract')
+const { startStream } = require('./lib/start-stream')
 const { deleteOldStories } = require('./lib/delete-old-stories')
-const { deleteStaleKlouters } = require('./lib/delete-stale-klouters')
+const { deleteStaleSocial } = require('./lib/delete-stale-social')
 const { trackSentiment } = require('./lib/track-sentiment')
-const { trackSothbeys } = require('./lib/track-sothbeys')
-const { stream } = require('./lib/config')
-const { linkCheck, ageCheck } = require('./lib/utils') 
+// const { trackSothbeys } = require('./lib/track-sothbeys')
 
-////////////////////////////////////////////////////////////////////////////////
-// Find retweeted tweets with links on tracked topics
-////////////////////////////////////////////////////////////////////////////////
-
-stream
-
-  .on('tweet', tweet => {
-
-    if(linkCheck(tweet) && ageCheck(tweet)) {
-      console.log(tweet.user.screen_name)
-      console.log('------------------')
-      initExtract(tweet)
-    }
-  })
-
-  .on('error', err => console.error("ERR in stream", err))
-
+startStream()
 deleteOldStories()
+deleteStaleSocial('klouter')
+deleteStaleSocial('twitter')
 trackSentiment()
-deleteStaleKlouters()
 // trackSothbeys()
