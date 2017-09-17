@@ -1,3 +1,7 @@
 # twitter-streams
 
-Script to pull quality content from Twitter by topic into Firebase
+Back-end to pull and analyze content from Twitter using social cues
+
+To use you will need API keys for Twitter, Firebase and Klout
+
+
