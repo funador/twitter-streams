@@ -8,8 +8,9 @@ const { clearKloutCue } = require('./lib/clear-klout-cue')
 // require('./lib/test')
 // const { trackSothbeys } = require('./lib/track-sothbeys')
 
+
 startStream()
-deleteOldStories()
+// deleteOldStories()
 deleteStaleSocial('klouters')
 deleteStaleSocial('twitters')
 trackSentiment()
