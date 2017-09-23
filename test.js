@@ -1,20 +1,13 @@
-const arr = []
+let uu = require('url-unshort')()
 
-for (let i = 0; i < 300; i++) {
-  arr.push(i)
-}
 
-console.time('first')
-  arr.forEach(num => num)
-console.timeEnd('first')
 
-console.time('second')
-  arr.forEach(num => 
-    arr.forEach(_num => num + _num))
-console.timeEnd('second')
+// http://spok.al/67iq
 
-console.time('third')
-  arr.forEach(num => 
-    arr.forEach(_num => 
-      arr.forEach(__num => __num + _num + __num)))
-console.timeEnd('third')
+uu.expand('http://spok.al/67iq')
+  .then(url => {
+    if (url) console.log(`Original url is: ${url}`);
+    // no shortening service or an unknown one is used 
+    else console.log('This url can\'t be expanded');
+  })
+  .catch(err => console.log(err));
