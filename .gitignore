@@ -4,6 +4,6 @@
 .env
 twitter-streams-firebase.json
 twitter-streams-firebase-2.json
-twitter-streams-firebase-sentiment.json
+twitter-streams-sentiment.json
 variables.env.now
 todo.txt
