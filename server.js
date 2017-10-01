@@ -6,7 +6,7 @@ const { deleteStaleSocial } = require('./lib/delete-stale-social')
 const { trackSentiment } = require('./lib/track-sentiment')
 const { clearKloutCue } = require('./lib/clear-klout-cue')
 const { mailer } = require('./lib/mailer')
-// require('./lib/test')
+// require('./lib/test3')
 
 startStream()
 // deleteStaleStories()
