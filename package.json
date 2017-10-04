@@ -24,7 +24,6 @@
     "firebase-admin": "^5.1.0",
     "forever": "^0.15.1",
     "forever-monitor": "^1.7.0",
-    "fuzzy-string-matching": "^1.0.2",
     "moment": "^2.18.1",
     "mozscape": "^0.1.6",
     "nodemailer": "^4.1.0",
