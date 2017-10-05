@@ -5,7 +5,7 @@ const { deleteStaleStories } = require('./lib/cleanup/delete-stale-stories')
 const { deleteStaleSocial } = require('./lib/cleanup/delete-stale-social')
 const { clearKloutCue } = require('./lib/cleanup/clear-klout-cue')
 const { mailer } = require('./lib/mailer')
-// require('./lib/test3')
+// require('./lib/algo/algo-seed-data')
 
 startStream()
 // deleteStaleStories()
