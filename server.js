@@ -5,6 +5,8 @@ const { deleteStaleStories } = require('./lib/cleanup/delete-stale-stories')
 const { deleteStaleSocial } = require('./lib/cleanup/delete-stale-social')
 const { clearKloutCue } = require('./lib/cleanup/clear-klout-cue')
 const { mailer } = require('./lib/mailer')
+
+// Tools to build data
 // require('./lib/algo/algo-seed-data')
 
 startStream()
