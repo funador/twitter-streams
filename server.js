@@ -8,8 +8,9 @@ const { mailer } = require('./lib/mailer')
 
 // Tools to build data
 // require('./lib/algo/algo-seed-data')
+// require('./lib/algo/ham-maker')
 
-startStream()
+startStream('stream')
 // deleteStaleStories()
 deleteStaleSocial('klouters', 5)
 deleteStaleSocial('twitters', 1)
