@@ -2,9 +2,7 @@
 */.DS_Store
 .DS_Store
 .env
-twitter-streams-firebase.json
-twitter-streams-firebase-2.json
-twitter-streams-sentiment.json
 variables.env.now
 todo.txt
 lib/algo/ham-maker.js
+firebase.json
