@@ -1,3 +1,16 @@
 {
-	"dotenv": "variables.env.now",
+  "env": {
+    "CONSUMER_KEY": "kI54RwWwga80nCM8SqhRJHrM1",
+    "CONSUMER_SECRET": "HYKqQl65Jl7oIXQt3bS8bFn0zyFej9VNLHbxd8mYIsPPMx1lhH",
+    "ACCESS_TOKEN": "22101689-vrt0pdzfHszfmcm00oZLrH3Lw8GCvC2yOYlUWY8D5",
+    "ACCESS_TOKEN_SECRET": "U6TX6T9LZxNRq6waZ5Xyz64QWr5KPFLzd5qmG6MfkI3kP",
+    "CLOUDINARY_KEY": "319622857964427",
+    "CLOUDINARY_SECRET": "AH-_EFzGCb-oAUNwZ5Dl8WEPoBE",
+    "CLOUDINARY_NAME": "id8"
+  },
+  "files": [
+    "firebase.json",
+    "server.js",
+    "lib"
+  ]
 }
