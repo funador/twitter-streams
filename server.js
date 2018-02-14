@@ -6,12 +6,3 @@ const mailer = require('./lib/mailer')
 
 startStream()
 deleteStaleStories()
-
-if(process.env.NODE_ENV == 'production') {
-  process.on('unhandledRejection', r => {
-    mailer(r)
-  });
-}
-else {
-  process.on('unhandledRejection', r => console.log(r));  
-}
