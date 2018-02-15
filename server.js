@@ -1,10 +1,9 @@
-require('dotenv').config({path: __dirname + '/.env', silent: true})
+// {path: __dirname + '/.env', silent: true}
+
+require('dotenv').config()
 
 const app = require('express')()
-const startStream = require('./lib/start-stream')
-const deleteStaleStories = require('./lib/cleanup/delete-stale-stories')
+require('./lib/start-stream')()
+require('./lib/cleanup/delete-stale-stories')()
 
-startStream()
-deleteStaleStories()
-
-app.listen(process.env.PORT || 3000, () => console.log('listening'))
+app.listen(process.env.PORT || 8080, () => console.log('listening'))
