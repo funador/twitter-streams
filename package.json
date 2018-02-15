@@ -5,7 +5,8 @@
   "description": "analyzing twitter content",
   "scripts": {
     "start": "forever server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "deploy": "now rm twitter-streams && now --public && now logs twitter-streams -f"
   },
   "repository": {
     "type": "git",
