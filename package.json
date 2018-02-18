@@ -6,7 +6,8 @@
   "scripts": {
     "start": "forever server.js",
     "dev": "nodemon server.js",
-    "deploy": "now rm twitter-streams && now --public && now logs twitter-streams -f"
+    "deploy": "now rm twitter-streams && now --public && now logs twitter-streams -f",
+    "debug": "node --inspect server.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "forever": "^0.15.1",
     "forever-monitor": "^1.7.0",
     "he": "^1.1.1",
+    "memwatch-next": "^0.3.0",
     "moment": "^2.18.1",
     "probe-image-size": "^3.1.0",
     "request-image-size": "^2.1.0",
